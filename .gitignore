@@ -1,5 +1,9 @@
 # Logs
 npm-debug.log*
 
-# Dependency directories
+# Dependency Directories
 node_modules
+
+# Build Directories
+dist
+docs
