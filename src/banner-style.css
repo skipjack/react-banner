@@ -1,0 +1,126 @@
+/**
+ * Base styling for react-banner
+ * 
+ */
+
+.banner {
+    background: #333;
+}
+
+.banner__inner {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0.6em 1em;
+}
+
+.banner__mobile {
+    display: flex;
+    font-size: 1.5em;
+    position: absolute;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    transition: color 250ms;
+}
+
+.banner__logo {
+    margin: auto;
+}
+
+.banner__links {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.banner__link {
+    display: inline-block;
+    font-size: 0.8em;
+    padding: 1.5em;
+    color: white;
+    text-transform: uppercase;
+    transition: all 250ms;
+}
+
+.banner__search {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.8em 0;
+}
+
+.banner__search-input {
+    font-size:14px;
+    width:0;
+    padding:0;
+    border:none;
+    background:transparent;
+    text-indent:0.5em;
+    border-bottom:1px solid lightgrey;
+    margin-right:0;
+    color: white;
+    text-shadow: 0 0 0 whitesmoke;
+    transition:all 250ms;
+}
+
+.banner__search-input::-webkit-input-placeholder{
+    color: lightgrey;
+    text-shadow: none;
+    -webkit-text-fill-color: initial;
+}
+
+.banner__search-icon {
+    font-size:1em;
+    padding:0;
+    border:none;
+    cursor:pointer;
+    color:getColor(alto);
+    background:transparent;
+    transition:color 250ms;
+}
+
+.banner__search-input:focus,
+.banner__search-icon:focus {
+    outline:none;
+}
+
+.banner--search .banner__link {
+    pointer-events:none;
+    overflow:hidden;
+    white-space:nowrap;
+    padding:1.5em 0;
+    margin-right:-35px;
+    opacity:0;
+}
+
+.banner--search .banner__search-input {
+    margin-right:0.5em;
+    width:400px;
+}
+
+/*
+.banner--search .banner__search-icon.icon-cross {
+    display:block;
+}
+
+.banner--search .banner__search-icon.icon-magnifying-glass {
+    display:none;
+}*/
+
+.banner__bottom {
+    display: block;
+    background: #666;
+}
+
+.banner__child {
+    font-size: 0.8em;
+    margin: 0.5em 1em;
+    color: whitesmoke;
+    text-transform: uppercase;
+}
+
+.banner__child:first-of-type {
+    margin-left: 0;
+}
