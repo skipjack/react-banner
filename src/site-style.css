@@ -1,0 +1,35 @@
+/**
+ * General styling for the documentation (Site component)
+ * 
+ */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: sans-serif;
+}
+
+.site__container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.site__content {
+    padding: 1.5em;
+    flex: 1 1 auto;
+}
+
+.site__footer {
+    flex: 0 0 auto;
+}
+
+.site__footer .site__container {
+    padding: 1em 1.5em;
+    border-top: 1px solid #f2f2f2;
+}
