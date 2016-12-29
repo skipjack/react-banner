@@ -3,11 +3,11 @@ var Webpack = require('webpack');
 
 module.exports = {
     context: Path.resolve(__dirname, './src'),
-    entry: './site.js',
+    entry: './documentation.js',
 
     output: {
         path: Path.resolve(__dirname, './docs'),
-        publicPath: '/output/',
+        publicPath: '/',
         filename: 'root.bundle.js'
     },
 
@@ -55,6 +55,8 @@ module.exports = {
     devServer: {
         port: 8090,
         contentBase: Path.resolve('./docs'),
-        compress: true
+        compress: true,
+        inline: true,
+        watchContentBase: true
     }
 }
