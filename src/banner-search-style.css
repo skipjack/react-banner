@@ -1,0 +1,55 @@
+.banner-search {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.8em 0;
+}
+
+.banner-search-input {
+    font-size: 14px;
+    width: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    text-indent: 0.5em;
+    border-bottom: 1px solid lightgrey;
+    margin-right: 0;
+    color: white;
+    text-shadow: 0 0 0 whitesmoke;
+    transition: all 250ms;
+}
+
+.banner-search-input::-webkit-input-placeholder{
+    color: lightgrey;
+    text-shadow: none;
+    -webkit-text-fill-color: initial;
+}
+
+.banner-search-icon {
+    font-size: 1em;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    color: lightgrey;
+    background: transparent;
+    transition: color 250ms;
+}
+
+.banner-search-input:focus,
+.banner-search-icon:focus {
+    outline: none;
+}
+
+.banner-search--active .banner-search-input {
+    margin-right: 0.5em;
+    width: 400px;
+}
+
+/*
+.banner-search--active .banner-search-icon.icon-cross {
+    display:block;
+}
+
+.banner-search--active .banner-search-icon.icon-magnifying-glass {
+    display:none;
+}*/
