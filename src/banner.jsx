@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import './banner-style'
+// TODO: Import and render BannerSearch
 
 export default class Banner extends Component {
     static propTypes = {
@@ -57,21 +58,6 @@ export default class Banner extends Component {
                             })
                         }
                     </nav>
-
-                    <div className={ `${className}__search` }>
-                        <input
-                            type="text"
-                            placeholder="Search the site..."
-                            ref={ ref => this._input = ref }
-                            className={ `${className}__search-input` }
-                            onBlur={ this._toggleSearch.bind(this) } />
-                        <button
-                            className={ `${className}__search-icon` }
-                            onClick={ this._toggleSearch.bind(this) } />
-                        <button
-                            className={ `${className}__search-icon` }
-                            onClick={ this._toggleSearch.bind(this) } />
-                    </div>
                 </section>
 
                 {
@@ -102,22 +88,6 @@ export default class Banner extends Component {
         )
     }
 
-    componentDidMount() {
-        if (typeof window !== 'undefined') {
-            let { className } = this.props
-
-            window.addEventListener('keyup', e => {
-                let isSearchInput = e.target.classList.contains(`${className}__search-input`)
-
-                if (e.which === 9 && isSearchInput) {
-                    this.setState({
-                        searchMode: true
-                    })
-                }
-            })
-        }
-    }
-
     /**
      * Check if section is active
      *
@@ -140,10 +110,6 @@ export default class Banner extends Component {
     _toggleSearch() {
         this.setState({
             searchMode: !this.state.searchMode
-        }, () => {
-            if ( this.state.searchMode === true ) {
-                this._input.focus()
-            }
         })
     }
 }
