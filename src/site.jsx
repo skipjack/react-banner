@@ -10,6 +10,7 @@ export default props => {
         <div className={ block }>
             <Banner
                 searching
+                logo="React Banner"
                 sections={ Sections }
                 url={ window.location.pathname } />
 
