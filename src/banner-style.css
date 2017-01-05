@@ -13,21 +13,32 @@
     position: relative;
     max-width: 960px;
     margin: 0 auto;
-    /*padding: 0.6em 1em;*/
 }
 
 .banner__mobile {
-    display: flex;
-    font-size: 1.5em;
-    position: absolute;
-    align-items: center;
-    color: white;
+    display: none;
+    fill: white;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
     cursor: pointer;
+    background: transparent;
     transition: color 250ms;
+}
+
+.banner__mobile svg {
+    width: 20px;
+    height: 20px;
 }
 
 .banner__logo {
     margin: auto;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
 .banner__links {

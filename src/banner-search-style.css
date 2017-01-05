@@ -2,54 +2,62 @@
     flex: 0 0 auto;
     display: flex;
     justify-content: flex-end;
-    padding: 0.8em 0;
 }
 
-.banner-search-input {
+.banner-search__input {
     font-size: 14px;
     width: 0;
     padding: 0;
     border: none;
     background: transparent;
     text-indent: 0.5em;
-    border-bottom: 1px solid lightgrey;
     margin-right: 0;
     color: white;
-    text-shadow: 0 0 0 whitesmoke;
+    text-shadow: 0 0 0 #666;
     transition: all 250ms;
 }
 
-.banner-search-input::-webkit-input-placeholder{
-    color: lightgrey;
+.banner-search__input::-webkit-input-placeholder{
+    color: #666;
     text-shadow: none;
     -webkit-text-fill-color: initial;
 }
 
-.banner-search-icon {
+.banner-search__icon {
     font-size: 1em;
+    width: 1em;
+    height: 1em;
     padding: 0;
     border: none;
     cursor: pointer;
-    color: lightgrey;
+    fill: lightgrey;
     background: transparent;
     transition: color 250ms;
 }
 
-.banner-search-input:focus,
-.banner-search-icon:focus {
+.banner-search__input:focus,
+.banner-search__icon:focus {
     outline: none;
 }
 
-.banner-search--active .banner-search-input {
+.banner-search__clear {
+    display: none;
+    margin-right: 0.25em;
+}
+
+.banner-search__clear svg {
+    transform: scale(0.7);
+}
+
+.banner-search__initiate {
+    
+}
+
+.banner-search--active .banner-search__input {
     margin-right: 0.5em;
     width: 400px;
 }
 
-/*
-.banner-search--active .banner-search-icon.icon-cross {
-    display:block;
+.banner-search--active .banner-search__clear {
+    display: block;
 }
-
-.banner-search--active .banner-search-icon.icon-magnifying-glass {
-    display:none;
-}*/
