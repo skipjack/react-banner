@@ -6,7 +6,7 @@
   "scripts": {
     "build:lib": "webpack --config webpack.prod.js",
     "build:docs": "webpack --config webpack.dev.js",
-    "start": "webpack-dev-server --config webpack.dev.js",
+    "start": "webpack-dev-server --hot --config webpack.dev.js",
     "test": "npm prune && npm install && npm start"
   },
   "repository": {
