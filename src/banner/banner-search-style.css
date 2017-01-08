@@ -7,6 +7,7 @@
 .banner-search__input {
     font-size: 14px;
     width: 0;
+    max-width: 65vw;
     padding: 0;
     border: none;
     background: transparent;
@@ -43,14 +44,7 @@
 .banner-search__clear {
     display: none;
     margin-right: 0.25em;
-}
-
-.banner-search__clear svg {
-    transform: scale(0.7);
-}
-
-.banner-search__initiate {
-    
+    margin-bottom: -1px;
 }
 
 .banner-search--active .banner-search__input {

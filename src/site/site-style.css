@@ -5,10 +5,18 @@
 
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500,600');
 
+html {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
     font-family: 'Work Sans', 'Helvetica', sans-serif;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 .site {

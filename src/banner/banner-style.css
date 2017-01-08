@@ -1,18 +1,16 @@
-/**
- * Base styling for react-banner
- * 
- */
-
 .banner {
     background: #333;
 }
 
 .banner__inner {
     display: flex;
-    align-items: center;
-    position: relative;
+    width: 100%;
+    min-width: 320px;
     max-width: 960px;
+    min-height: 54px;
     margin: 0 auto;
+    padding: 0 1.5em;
+    align-items: center;
 }
 
 .banner__mobile {
@@ -20,6 +18,7 @@
     fill: white;
     padding: 0;
     margin: 0;
+    line-height: 0;
     outline: none;
     border: none;
     cursor: pointer;
@@ -36,9 +35,10 @@
     margin: auto;
     text-decoration: none;
     text-transform: uppercase;
-    color: white;
     font-weight: 500;
     letter-spacing: 0.5px;
+    color: white;
+    transition: all 250ms;
 }
 
 .banner__links {
@@ -81,4 +81,18 @@
     padding: 1.5em 0;
     margin-right: -35px;
     opacity: 0;
+}
+
+@media (max-width: 720px) {
+    .banner__mobile { display: block; }
+    .banner__links { display: none; }
+    .banner--search .banner__logo {
+        pointer-events: none;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-right: -35px;
+        letter-spacing: -1em;
+        opacity: 0;
+    }
 }
