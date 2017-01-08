@@ -3,7 +3,7 @@ var Webpack = require('webpack');
 
 module.exports = {
     context: Path.resolve(__dirname, './src'),
-    entry: './documentation.js',
+    entry: './docs.js',
 
     output: {
         path: Path.resolve(__dirname, './docs'),

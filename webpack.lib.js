@@ -3,7 +3,7 @@ var Webpack = require('webpack');
 
 module.exports = {
     context: Path.resolve(__dirname, './src'),
-    entry: './banner.jsx',
+    entry: './banner/banner.jsx',
     output: {
         path: Path.resolve(__dirname, './dist'),
         filename: 'library.bundle.js',
