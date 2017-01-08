@@ -6,4 +6,4 @@ node_modules
 
 # Build Directories
 dist
-docs
+docs/root.bundle.js
