@@ -1,5 +1,7 @@
 var Path = require('path');
 var Webpack = require('webpack');
+var HTMLPlugin = require('html-webpack-plugin');
+var Production = process.env.NODE_ENV === 'production';
 
 module.exports = {
     context: Path.resolve(__dirname, './src'),
@@ -51,6 +53,22 @@ module.exports = {
         fix: true,
         configFile: Path.resolve(__dirname, './.eslintrc')
     },
+
+    plugins: [
+        new HTMLPlugin({
+            inject: false,
+            template: require('html-webpack-template'),
+
+            title: 'React Banner | A flexible banner component',
+            appMountId: 'root',
+            mobile: true,
+            favicon: './favicon.ico',
+            baseHref: Production ? 'https://skipjack.github.io/react-banner/' : undefined,
+            meta: {
+                description: 'A flexible banner component built with ReactJS.'
+            }
+        })
+    ],
 
     devServer: {
         port: 8090,
