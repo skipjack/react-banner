@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Getting Started",
+    "url": "/"
+  },
+  {
+    "title": "Customization",
+    "url": "/customization"
+  },
+  {
+    "title": "Examples",
+    "url": "/examples",
+    "children": [
+      { "title": "React Router", "url": "/router" },
+      { "title": "React Sidebar", "url": "/sidebar" },
+      { "title": "React Headroom", "url": "/headroom" }
+    ]
+  },
+  {
+    "title": "Github",
+    "url": "https://github.com/skipjack/react-banner"
+  }
+]

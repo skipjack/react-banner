@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router'
 import Banner from '../banner/banner'
-import Sections from './sections'
+import Links from './site-links'
 import './site-style'
 
 const block = 'site'
@@ -11,7 +12,7 @@ export default props => {
             <Banner
                 searching
                 logo="React Banner"
-                sections={ Sections }
+                links={ Links }
                 url={ window.location.pathname } />
 
             <main className={ `${block}__content` }>

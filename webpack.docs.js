@@ -57,6 +57,6 @@ module.exports = {
         contentBase: Path.resolve('./docs'),
         compress: true,
         inline: true,
-        watchContentBase: true
+        historyApiFallback: true
     }
 }

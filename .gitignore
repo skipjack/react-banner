@@ -3,7 +3,3 @@ npm-debug.log*
 
 # Dependency Directories
 node_modules
-
-# Build Directories
-dist
-docs/root.bundle.js
