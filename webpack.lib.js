@@ -1,5 +1,6 @@
 var Path = require('path');
 var Webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     context: Path.resolve(__dirname, './src'),
@@ -10,9 +11,11 @@ module.exports = {
         library: 'Banner',
         libraryTarget: 'umd'
     },
+
     resolve: {
         extensions: [ '', '.js', '.jsx', '.css' ]
     },
+
     module: {
         loaders: [
             {
@@ -25,10 +28,10 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loaders: [
+                loader: ExtractTextPlugin.extract(
                     'style-loader',
                     'css-loader'
-                ]
+                )
             },
             {
                 test: /\.svg$/,
@@ -38,6 +41,14 @@ module.exports = {
             }
         ]
     },
+
+    plugins: [
+        new ExtractTextPlugin('style.css'),
+        new Webpack.optimize.UglifyJsPlugin({
+            comments: false
+        })
+    ],
+
     externals: {
         react: {
             root: "React",
@@ -52,8 +63,13 @@ module.exports = {
             amd: "react-dom"
         }
     },
+
     eslint: {
         fix: true,
         configFile: Path.resolve(__dirname, './.eslintrc')
+    },
+
+    stats: {
+        children: false
     }
 }
