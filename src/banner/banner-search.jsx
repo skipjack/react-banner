@@ -3,25 +3,25 @@ import './banner-search-style'
 
 export default class BannerSearch extends Component {
     static propTypes = {
-        className: PropTypes.string.isRequired,
+        blockName: PropTypes.string.isRequired,
         active: PropTypes.bool.isRequired,
         onToggle: PropTypes.func.isRequired
     }
 
     render() {
-        let { className, active } = this.props,
-            activeMod = active ? `${className}--active` : ''
+        let { blockName, active } = this.props,
+            activeMod = active ? `${blockName}--active` : ''
 
         return (
-            <div className={ `${className} ${activeMod}` }>
+            <div className={ `${blockName} ${activeMod}` }>
                 <input
                     ref={ ref => this._input = ref }
-                    className={ `${className}__input` }
+                    className={ `${blockName}__input` }
                     type="text"
                     placeholder="Search the site..." />
 
                 <button
-                    className={ `${className}__icon ${className}__clear` }
+                    className={ `${blockName}__icon ${blockName}__clear` }
                     onClick={ this.props.onToggle }>
                     <svg viewBox="-137 138 25 25">
                         <g transform="translate(0,-952.36218)">
@@ -33,7 +33,7 @@ export default class BannerSearch extends Component {
                 </button>
 
                 <button
-                    className={ `${className}__icon ${className}__search` }
+                    className={ `${blockName}__icon ${blockName}__search` }
                     onClick={ this.props.onToggle }>
                     <svg viewBox="-137 138 25 25">
                         <g>

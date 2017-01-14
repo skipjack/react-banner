@@ -2,22 +2,30 @@ import React, { Component, PropTypes } from 'react'
 import BannerSearch from './banner-search'
 import './banner-style'
 
+const DefaultLink = props => (
+    <a { ...props }>{ props.children }</a>
+)
+
 export default class Banner extends Component {
     static propTypes = {
+        blockName: PropTypes.string,
         className: PropTypes.string,
         logo: PropTypes.node,
         url: PropTypes.string.isRequired,
-        sections: PropTypes.arrayOf( PropTypes.object ).isRequired,
-        searching: PropTypes.bool.isRequired,
-        onMobileMenuToggle: PropTypes.func,
-        onSearchToggle: PropTypes.func
+        link: PropTypes.oneOfType([ PropTypes.func, PropTypes.instanceOf(Component) ]),
+        links: PropTypes.arrayOf( PropTypes.object ).isRequired,
+        search: PropTypes.bool.isRequired,
+        onMenuClick: PropTypes.func,
+        onSearch: PropTypes.func,
+        onSearchTyping: PropTypes.func
     }
 
     static defaultProps = {
-        className: 'banner',
-        searching: false,
-        onMobileMenuToggle: () => {},
-        onSearchToggle: () => {}
+        blockName: 'banner',
+        className: '',
+        link: DefaultLink,
+        search: true,
+        links: []
     }
 
     state = {
@@ -26,16 +34,16 @@ export default class Banner extends Component {
     }
 
     render() {
-        let { className, sections } = this.props,
+        let { blockName, className } = this.props,
             { searching } = this.state,
-            searchMod = searching ? `${className}--search` : ''
+            searchMod = searching ? `${blockName}--search` : ''
 
         return (
-            <header className={ `${className} ${searchMod}` }>
-                <section className={ `${className}__inner` }>
+            <header className={ `${blockName} ${searchMod} ${className}` }>
+                <section className={ `${blockName}__inner` }>
                     <button 
-                        className={ `${className}__mobile` } 
-                        onClick={ this.props.onMobileMenuToggle }>
+                        className={ `${blockName}__mobile` } 
+                        onClick={ this.props.onMenuClick }>
                         <svg viewBox="-62 138 25 25">
                             <g>
                                 <path d="M-60.2,140.2h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0
@@ -48,57 +56,45 @@ export default class Banner extends Component {
                         </svg>
                     </button>
 
-                    <a className={ `${className}__logo` } href="/">
+                    <a className={ `${blockName}__logo` } href="/">
                         { this.props.logo }
                     </a>
 
-                    <nav className={ `${className}__links` }>
-                        {
-                            sections.map(section => {
-                                let active = this._isActive(section)
-                                let activeMod = active ? `${className}__link--active` : ''
-
-                                return (
-                                    <a
-                                        key={ `${className}__link-${section.title}` }
-                                        className={ `${className}__link ${activeMod}` }
-                                        href={ section.url }>
-                                        { section.title }
-                                    </a>
-                                )
-                            })
-                        }
+                    <nav className={ `${blockName}__links` }>
+                        { this._links }
                     </nav>
 
-                    <BannerSearch
-                        className={ `${className}-search` }
-                        active={ this.state.searching }
-                        onToggle={ this._toggleSearch } />
+                    { this.props.search ? (
+                        <BannerSearch
+                            blockName={ `${blockName}-search` }
+                            active={ this.state.searching }
+                            onToggle={ this._toggleSearch } />
+                    ) : null }
                 </section>
 
                 {
-                    sections.filter(section => this._isActive(section) && section.children).map(section => {
-                        return (
-                            <div className={ `${className}__bottom` } key={ section.title }>
-                                <section className={ `${className}__inner` }>
-                                    {
-                                        section.children.map(child => {
-                                            let activeMod = this._isActive(child) ? `${className}__child--active` : ''
+                    // links.filter(section => this._isActive(section) && section.children).map(section => {
+                    //     return (
+                    //         <div className={ `${className}__bottom` } key={ section.title }>
+                    //             <section className={ `${className}__inner` }>
+                    //                 {
+                    //                     section.children.map(child => {
+                    //                         let activeMod = this._isActive(child) ? `${className}__child--active` : ''
 
-                                            return (
-                                                <a
-                                                    key={ `${className}__child-${child.title}` }
-                                                    className={ `${className}__child ${activeMod}` }
-                                                    href={ child.url }>
-                                                    { child.title }
-                                                </a>
-                                            )
-                                        })
-                                    }
-                                </section>
-                            </div>
-                        )
-                    })
+                    //                         return (
+                    //                             <a
+                    //                                 key={ `${className}__child-${child.title}` }
+                    //                                 className={ `${className}__child ${activeMod}` }
+                    //                                 href={ child.url }>
+                    //                                 { child.title }
+                    //                             </a>
+                    //                         )
+                    //                     })
+                    //                 }
+                    //             </section>
+                    //         </div>
+                    //     )
+                    // })
                 }
             </header>
         )
@@ -114,6 +110,29 @@ export default class Banner extends Component {
         if ( this.state.browser ) {
             window.removeEventListener('keyup', this._handleKey)
         }
+    }
+
+    /**
+     * An array of markup to render for the links
+     * 
+     * @return {array} - An array of components
+     */
+    get _links() {
+        let { blockName, links, link: Link } = this.props
+
+        return links.map(section => {
+            let active = this._isActive(section),
+                activeMod = active ? `${blockName}__link--active` : ''
+
+            return (
+                <Link
+                    key={ `${blockName}__link-${section.title}` }
+                    className={ `${blockName}__link ${activeMod}` }
+                    href={ section.url }>
+                    { section.title }
+                </Link>
+            )
+        })
     }
 
     /**
