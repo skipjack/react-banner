@@ -126,8 +126,8 @@ export default class Banner extends Component {
 
             return (
                 <Link
-                    key={ `${blockName}__link-${section.title}` }
                     className={ `${blockName}__link ${activeMod}` }
+                    key={ `${blockName}__link-${section.title}` }
                     href={ section.url }>
                     { section.title }
                 </Link>
@@ -166,8 +166,8 @@ export default class Banner extends Component {
      * @param {object} e - Native keyboard event
      */
     _handleKey = e => {
-        let { className } = this.props,
-            isSearchInput = e.target.classList.contains(`${className}__input`)
+        let { blockName } = this.props,
+            isSearchInput = e.target.classList.contains(`${blockName}-search__input`)
 
         if (e.which === 9 && isSearchInput) {
             this.setState({
