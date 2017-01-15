@@ -5,12 +5,6 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     context: Path.resolve(__dirname, './src'),
     entry: './banner/banner.jsx',
-    output: {
-        path: Path.resolve(__dirname, './dist'),
-        filename: 'library.bundle.js',
-        library: 'Banner',
-        libraryTarget: 'umd'
-    },
 
     resolve: {
         extensions: [ '', '.js', '.jsx', '.css' ]
@@ -42,6 +36,11 @@ module.exports = {
         ]
     },
 
+    eslint: {
+        fix: true,
+        configFile: Path.resolve(__dirname, './.eslintrc')
+    },
+
     plugins: [
         new ExtractTextPlugin('style.css'),
         new Webpack.optimize.UglifyJsPlugin({
@@ -63,10 +62,12 @@ module.exports = {
             amd: "react-dom"
         }
     },
-
-    eslint: {
-        fix: true,
-        configFile: Path.resolve(__dirname, './.eslintrc')
+    
+    output: {
+        path: Path.resolve(__dirname, './dist'),
+        filename: 'library.bundle.js',
+        library: 'Banner',
+        libraryTarget: 'umd'
     },
 
     stats: {
