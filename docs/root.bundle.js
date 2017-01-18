@@ -27182,27 +27182,27 @@
 	module.exports = [
 		{
 			"title": "Getting Started",
-			"url": "/"
+			"url": "./"
 		},
 		{
 			"title": "Customization",
-			"url": "/customization"
+			"url": "customization"
 		},
 		{
 			"title": "Examples",
-			"url": "/examples",
+			"url": "examples",
 			"children": [
 				{
 					"title": "React Router",
-					"url": "router"
+					"url": "examples/router"
 				},
 				{
 					"title": "React Sidebar",
-					"url": "sidebar"
+					"url": "examples/sidebar"
 				},
 				{
 					"title": "React Headroom",
-					"url": "headroom"
+					"url": "examples/headroom"
 				}
 			]
 		},
