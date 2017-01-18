@@ -1,6 +1,8 @@
 var Path = require('path');
 var Webpack = require('webpack');
 var HTMLPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+
 var Production = process.env.NODE_ENV === 'production';
 
 module.exports = {
@@ -64,10 +66,18 @@ module.exports = {
             mobile: true,
             favicon: './favicon.ico',
             baseHref: Production ? 'https://skipjack.github.io/react-banner/' : undefined,
+            scripts: Production ? [
+                'spa-redirect.js'
+            ] : [],
             meta: {
                 description: 'A flexible banner component built with ReactJS.'
             }
-        })
+        }),
+
+        new CopyWebpackPlugin([
+            { from: '404.html' },
+            { from: 'spa-redirect.js' }
+        ])
     ],
 
     devServer: {

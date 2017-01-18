@@ -26516,8 +26516,8 @@
 	                searching: !_this.state.searching
 	            });
 	        }, _this._handleKey = function (e) {
-	            var className = _this.props.className,
-	                isSearchInput = e.target.classList.contains(className + '__input');
+	            var blockName = _this.props.blockName,
+	                isSearchInput = e.target.classList.contains(blockName + '-search__input');
 
 
 	            if (e.which === 9 && isSearchInput) {
@@ -26604,20 +26604,16 @@
 
 
 	        /**
-	         * Check if section is active
+	         * Check if link is active
 	         *
-	         * @param {object} section - An object describing the section
-	         * @return {bool} - Whether or not the given section is active
+	         * @param {object} link - An object describing the link
+	         * @return {bool} - Whether or not the given link is active
 	         */
-	        value: function _isActive(section) {
+	        value: function _isActive(link) {
 	            var url = this.props.url;
 
 
-	            if (section.children) {
-	                return section.children.some(function (child) {
-	                    return url.includes(child.url + '/');
-	                });
-	            } else return url.includes(section.url + '/');
+	            return url === link.url || url.includes(link.url + '/');
 	        }
 
 	        /**
@@ -26643,17 +26639,17 @@
 	                Link = _props2.link;
 
 
-	            return links.map(function (section) {
-	                var active = _this2._isActive(section),
+	            return links.map(function (link) {
+	                var active = _this2._isActive(link),
 	                    activeMod = active ? blockName + '__link--active' : '';
 
 	                return _react2.default.createElement(
 	                    Link,
 	                    {
-	                        key: blockName + '__link-' + section.title,
 	                        className: blockName + '__link ' + activeMod,
-	                        href: section.url },
-	                    section.title
+	                        key: blockName + '__link-' + link.title,
+	                        href: link.url },
+	                    link.title
 	                );
 	            });
 	        }
@@ -27174,7 +27170,7 @@
 
 
 	// module
-	exports.push([module.id, ".banner {\n    background: #333;\n}\n\n.banner__inner {\n    display: flex;\n    width: 100%;\n    min-width: 320px;\n    max-width: 960px;\n    min-height: 54px;\n    margin: 0 auto;\n    padding: 0 1.5em;\n    align-items: center;\n}\n\n.banner__mobile {\n    display: none;\n    fill: white;\n    padding: 0;\n    margin: 0;\n    line-height: 0;\n    outline: none;\n    border: none;\n    cursor: pointer;\n    background: transparent;\n    transition: color 250ms;\n}\n\n.banner__mobile svg {\n    width: 20px;\n    height: 20px;\n}\n\n.banner__logo {\n    margin: auto;\n    text-decoration: none;\n    text-transform: uppercase;\n    font-weight: 500;\n    letter-spacing: 0.5px;\n    color: white;\n    transition: all 250ms;\n}\n\n.banner__links {\n    flex: 1 1 auto;\n    display: flex;\n    align-items: center;\n    justify-content: flex-end;\n}\n\n.banner__link {\n    display: inline-block;\n    font-size: 0.8em;\n    padding: 1.5em;\n    color: lightgrey;\n    text-transform: uppercase;\n    text-decoration: none;\n    transition: all 250ms;\n}\n\n.banner__bottom {\n    display: block;\n    background: #666;\n}\n\n.banner__child {\n    font-size: 0.8em;\n    margin: 0.5em 1em;\n    color: whitesmoke;\n    text-transform: uppercase;\n}\n\n.banner__child:first-of-type {\n    margin-left: 0;\n}\n\n.banner--search .banner__link {\n    pointer-events: none;\n    overflow: hidden;\n    white-space: nowrap;\n    padding: 1.5em 0;\n    margin-right: -35px;\n    opacity: 0;\n}\n\n@media (max-width: 720px) {\n    .banner__mobile { display: block; }\n    .banner__links { display: none; }\n    .banner--search .banner__logo {\n        pointer-events: none;\n        overflow: hidden;\n        white-space: nowrap;\n        text-overflow: ellipsis;\n        margin-right: -35px;\n        letter-spacing: -1em;\n        opacity: 0;\n    }\n}\n", ""]);
+	exports.push([module.id, ".banner {\n    background: #333;\n}\n\n.banner__inner {\n    display: flex;\n    width: 100%;\n    min-width: 320px;\n    max-width: 960px;\n    min-height: 54px;\n    margin: 0 auto;\n    padding: 0 1.5em;\n    align-items: center;\n}\n\n.banner__mobile {\n    display: none;\n    fill: white;\n    padding: 0;\n    margin: 0;\n    line-height: 0;\n    outline: none;\n    border: none;\n    cursor: pointer;\n    background: transparent;\n    transition: color 250ms;\n}\n\n.banner__mobile svg {\n    width: 20px;\n    height: 20px;\n}\n\n.banner__logo {\n    margin: auto;\n    text-decoration: none;\n    text-transform: uppercase;\n    font-weight: 500;\n    letter-spacing: 0.5px;\n    color: white;\n    transition: all 250ms;\n}\n\n.banner__links {\n    flex: 1 1 auto;\n    display: flex;\n    align-items: center;\n    justify-content: flex-end;\n}\n\n.banner__link {\n    display: inline-block;\n    font-size: 0.8em;\n    padding: 1.5em;\n    color: lightgrey;\n    text-transform: uppercase;\n    text-decoration: none;\n    transition: all 250ms;\n}\n\n.banner__link--active {\n    background: #535353;\n    color: #fff;\n}\n\n.banner--search .banner__link {\n    pointer-events: none;\n    overflow: hidden;\n    white-space: nowrap;\n    padding: 1.5em 0;\n    margin-right: -35px;\n    opacity: 0;\n}\n\n@media (max-width: 720px) {\n    .banner__mobile { display: block; }\n    .banner__links { display: none; }\n    .banner--search .banner__logo {\n        pointer-events: none;\n        overflow: hidden;\n        white-space: nowrap;\n        text-overflow: ellipsis;\n        margin-right: -35px;\n        letter-spacing: -1em;\n        opacity: 0;\n    }\n}\n", ""]);
 
 	// exports
 
