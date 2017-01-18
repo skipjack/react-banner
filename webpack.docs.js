@@ -65,7 +65,7 @@ module.exports = {
             appMountId: 'root',
             mobile: true,
             favicon: './favicon.ico',
-            baseHref: Production ? 'https://skipjack.github.io/react-banner/' : undefined,
+            baseHref: Production ? 'https://skipjack.github.io/react-banner/' : '/',
             scripts: Production ? [
                 'spa-redirect.js'
             ] : [],

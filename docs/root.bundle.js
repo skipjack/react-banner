@@ -27194,15 +27194,15 @@
 			"children": [
 				{
 					"title": "React Router",
-					"url": "/router"
+					"url": "router"
 				},
 				{
 					"title": "React Sidebar",
-					"url": "/sidebar"
+					"url": "sidebar"
 				},
 				{
 					"title": "React Headroom",
-					"url": "/headroom"
+					"url": "headroom"
 				}
 			]
 		},

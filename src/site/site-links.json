@@ -11,9 +11,9 @@
     "title": "Examples",
     "url": "/examples",
     "children": [
-      { "title": "React Router", "url": "/router" },
-      { "title": "React Sidebar", "url": "/sidebar" },
-      { "title": "React Headroom", "url": "/headroom" }
+      { "title": "React Router", "url": "router" },
+      { "title": "React Sidebar", "url": "sidebar" },
+      { "title": "React Headroom", "url": "headroom" }
     ]
   },
   {
