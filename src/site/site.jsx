@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router'
 import Banner from '../banner/banner'
-import Links from './site-links'
+import SPALink from '../links/spa-link'
+import SiteLinks from './site-links'
 import './site-style'
 
 const block = 'site'
@@ -12,7 +12,8 @@ export default props => {
             <Banner
                 searching
                 logo="React Banner"
-                links={ Links }
+                link={ SPALink }
+                links={ SiteLinks }
                 url={ window.location.pathname } />
 
             <main className={ `${block}__content` }>
