@@ -58,20 +58,9 @@
     transition: all 250ms;
 }
 
-.banner__bottom {
-    display: block;
-    background: #666;
-}
-
-.banner__child {
-    font-size: 0.8em;
-    margin: 0.5em 1em;
-    color: whitesmoke;
-    text-transform: uppercase;
-}
-
-.banner__child:first-of-type {
-    margin-left: 0;
+.banner__link--active {
+    background: #535353;
+    color: #fff;
 }
 
 .banner--search .banner__link {

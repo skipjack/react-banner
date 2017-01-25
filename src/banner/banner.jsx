@@ -1,10 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import BannerSearch from './banner-search'
+import BannerSub from './banner-sub'
+import StandardLink from '../links/standard-link'
 import './banner-style'
-
-const DefaultLink = props => (
-    <a { ...props }>{ props.children }</a>
-)
 
 export default class Banner extends Component {
     static propTypes = {
@@ -12,8 +10,13 @@ export default class Banner extends Component {
         className: PropTypes.string,
         logo: PropTypes.node,
         url: PropTypes.string.isRequired,
-        link: PropTypes.oneOfType([ PropTypes.func, PropTypes.instanceOf(Component) ]),
-        links: PropTypes.arrayOf( PropTypes.object ).isRequired,
+        link: PropTypes.oneOfType([ 
+            PropTypes.func, 
+            PropTypes.instanceOf(Component) 
+        ]),
+        links: PropTypes.arrayOf( 
+            PropTypes.object 
+        ),
         search: PropTypes.bool.isRequired,
         onMenuClick: PropTypes.func,
         onSearch: PropTypes.func,
@@ -23,19 +26,21 @@ export default class Banner extends Component {
     static defaultProps = {
         blockName: 'banner',
         className: '',
-        link: DefaultLink,
+        link: StandardLink,
         search: true,
         links: []
     }
 
     state = {
         browser: window !== undefined,
-        searching: false
+        searching: false,
+        sublinks: []
     }
 
     render() {
         let { blockName, className } = this.props,
-            { searching } = this.state,
+            { link: Link } = this.props,
+            { searching, sublinks } = this.state,
             searchMod = searching ? `${blockName}--search` : ''
 
         return (
@@ -56,9 +61,9 @@ export default class Banner extends Component {
                         </svg>
                     </button>
 
-                    <a className={ `${blockName}__logo` } href="/">
+                    <Link className={ `${blockName}__logo` } url="/">
                         { this.props.logo }
-                    </a>
+                    </Link>
 
                     <nav className={ `${blockName}__links` }>
                         { this._links }
@@ -72,30 +77,12 @@ export default class Banner extends Component {
                     ) : null }
                 </section>
 
-                {
-                    // links.filter(section => this._isActive(section) && section.children).map(section => {
-                    //     return (
-                    //         <div className={ `${className}__bottom` } key={ section.title }>
-                    //             <section className={ `${className}__inner` }>
-                    //                 {
-                    //                     section.children.map(child => {
-                    //                         let activeMod = this._isActive(child) ? `${className}__child--active` : ''
-
-                    //                         return (
-                    //                             <a
-                    //                                 key={ `${className}__child-${child.title}` }
-                    //                                 className={ `${className}__child ${activeMod}` }
-                    //                                 href={ child.url }>
-                    //                                 { child.title }
-                    //                             </a>
-                    //                         )
-                    //                     })
-                    //                 }
-                    //             </section>
-                    //         </div>
-                    //     )
-                    // })
-                }
+                <BannerSub
+                    blockName={ `${blockName}-sub` }
+                    url={ this.props.url }
+                    isActive={ this._isActive.bind(this) }
+                    link={ this.props.link }
+                    sublinks={ sublinks } />
             </header>
         )
     }
@@ -103,7 +90,12 @@ export default class Banner extends Component {
     componentDidMount() {
         if ( this.state.browser ) {
             window.addEventListener('keyup', this._handleKey)
+            this._updateSublinks(this.props)
         }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this._updateSublinks(nextProps)
     }
 
     componentWillUnmount() {
@@ -118,36 +110,59 @@ export default class Banner extends Component {
      * @return {array} - An array of components
      */
     get _links() {
-        let { blockName, links, link: Link } = this.props
+        let { blockName, links, link: Link, url } = this.props
 
-        return links.map(section => {
-            let active = this._isActive(section),
+        return links.map(link => {
+            let active = this._isActive(link, url),
                 activeMod = active ? `${blockName}__link--active` : ''
 
             return (
                 <Link
                     className={ `${blockName}__link ${activeMod}` }
-                    key={ `${blockName}__link-${section.title}` }
-                    href={ section.url }>
-                    { section.title }
+                    key={ `${blockName}__link-${link.title}` }
+                    { ...link }>
+                    { link.title }
                 </Link>
             )
         })
     }
 
     /**
-     * Check if section is active
+     * Check if link is active
      *
-     * @param {object} section - An object describing the section
-     * @return {bool} - Whether or not the given section is active
+     * @param {object} link - An object describing the link
+     * @param {string} url - The URL to test against
+     * @return {bool} - Whether or not the given link is active
      */
-    _isActive(section) {
-        let { url } = this.props
+    _isActive(link, url) {
+        if (url.length > 1) {
+            return (
+                url.endsWith(link.url) ||
+                url.includes(`${link.url}/`)
+            )
 
-        if (section.children) {
-            return section.children.some(child => url.includes(`${child.url}/`))
+        } else if (url === '/') {
+            return (
+                link.url === '/' ||
+                link.url === ''
+            )
 
-        } else return url.includes(`${section.url}/`)
+        } else return false
+    }
+
+    /**
+     * Update the current array of sublinks based on the active link
+     * 
+     * @param {object} props - The props to use for updating
+     */
+    _updateSublinks(props = {}) {
+        let { links = [], url } = props,
+            activeLink = links.find(link => this._isActive(link, url)) || {},
+            { children = [] } = activeLink
+
+        this.setState({
+            sublinks: children
+        })
     }
 
     /**

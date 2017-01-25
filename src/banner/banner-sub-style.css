@@ -1,0 +1,27 @@
+.banner-sub {
+    display: block;
+    background: #535353;
+}
+
+.banner-sub__inner {
+    min-width: 320px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0.25em 1.5em;
+    text-align: right;
+}
+
+.banner-sub__link {
+    font-size: 0.8em;
+    color: whitesmoke;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.banner-sub__link:not(:last-child) {
+    margin-right: 1.5em;
+}
+
+.banner-sub__link:first-of-type {
+    margin-left: 0;
+}
