@@ -25,3 +25,9 @@
 .banner-sub__link:first-of-type {
     margin-left: 0;
 }
+
+@media (max-width: 720px) {
+    .banner-sub {
+        display: none;
+    }
+}
