@@ -65,7 +65,7 @@ module.exports = {
     
     output: {
         path: Path.resolve(__dirname, './dist'),
-        filename: 'library.bundle.js',
+        filename: 'react-banner.min.js',
         library: 'Banner',
         libraryTarget: 'umd'
     },

@@ -4,7 +4,7 @@
   "description": "A flexible banner component.",
   "main": "index.js",
   "scripts": {
-    "build:lib": "webpack --config webpack.lib.js",
+    "build:lib": "webpack --config webpack.dist.js",
     "build:docs": "NODE_ENV='production' webpack --config webpack.docs.js",
     "start": "webpack-dev-server --hot --config webpack.docs.js",
     "test": "npm prune && npm install && npm start"
