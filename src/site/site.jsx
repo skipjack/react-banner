@@ -1,4 +1,6 @@
 import React from 'react'
+import Headroom from 'react-headroom'
+import Sidebar from 'react-sidebar'
 import Banner from '../banner/banner'
 import SPALink from '../links/spa-link'
 import SiteLinks from './site-links'
@@ -10,7 +12,6 @@ export default props => {
     return (
         <div className={ block }>
             <Banner
-                searching
                 logo="React Banner"
                 link={ SPALink }
                 links={ SiteLinks }
