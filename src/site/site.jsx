@@ -8,26 +8,55 @@ import './site-style'
 
 const block = 'site'
 
-export default props => {
-    return (
-        <div className={ block }>
-            <Banner
-                logo="React Banner"
-                link={ SPALink }
-                links={ SiteLinks }
-                url={ window.location.pathname } />
+export default class Site extends React.Component {
+    state = {
+        sidebar: false
+    }
 
-            <main className={ `${block}__content` }>
-                <div className={ `${block}__container` }>
-                    Some content
-                </div>
-            </main>
+    render() {
+        return (
+            <Sidebar
+                contentClassName={ block }
+                sidebar={(
+                    <div style={{
+                        width: '80vw',
+                        height: '100vh',
+                        background: 'white'
+                    }} />
+                )}
+                open={ this.state.sidebar }
+                onSetOpen={ this._toggleSidebar }>
+                <Headroom>
+                    <Banner
+                        logo="React Banner"
+                        link={ SPALink }
+                        links={ SiteLinks }
+                        url={ window.location.pathname }
+                        onMenuClick={ this._openSidebar } />
+                </Headroom>
 
-            <footer className={ `${block}__footer` }>
-                <div className={ `${block}__container` }>
-                    
-                </div>
-            </footer>
-        </div>
-    )
+                <main className={ `${block}__content` }>
+                    <div className={ `${block}__container` }>
+                        Some content
+                    </div>
+                </main>
+
+                <footer className={ `${block}__footer` }>
+                    <div className={ `${block}__container` }>
+                        
+                    </div>
+                </footer>
+            </Sidebar>
+        )
+    }
+
+    _toggleSidebar = visible => {
+        this.setState({
+            sidebar: visible
+        })
+    }
+
+    _openSidebar = () => {
+        this._toggleSidebar(true)
+    }
 }
