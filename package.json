@@ -2,8 +2,9 @@
   "name": "react-banner",
   "version": "0.1.0",
   "description": "A flexible banner component.",
-  "main": "index.js",
+  "main": "react-banner.min.js",
   "scripts": {
+    "build": "npm run build:lib && npm run build:docs",
     "build:lib": "webpack --config webpack.dist.js",
     "build:docs": "NODE_ENV='production' webpack --config webpack.docs.js",
     "start": "webpack-dev-server --hot --config webpack.docs.js",
@@ -46,6 +47,7 @@
     "html-webpack-plugin": "^2.26.0",
     "html-webpack-template": "^6.0.0",
     "json-loader": "^0.5.4",
+    "raw-loader": "^0.5.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-headroom": "^2.1.3",

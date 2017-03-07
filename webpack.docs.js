@@ -5,6 +5,13 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var Production = process.env.NODE_ENV === 'production';
 
+var UglifyPlugin = Production ? new Webpack.optimize.UglifyJsPlugin({
+    comments: false,
+    compress: {
+        warnings: false
+    }
+}) : function() {}
+
 module.exports = {
     context: Path.resolve(__dirname, './src'),
     entry: './docs.js',
@@ -16,7 +23,7 @@ module.exports = {
     },
 
     resolve: {
-        extensions: [ '', '.js', '.jsx', '.json', '.css' ]
+        extensions: [ '', '.js', '.jsx', '.json', '.css', '.md' ]
     },
 
     module: {
@@ -40,6 +47,12 @@ module.exports = {
                 test: /\.svg$/,
                 loaders: [
                     'file-loader'
+                ]
+            },
+            {
+                test: /\.md$/,
+                loaders: [
+                    'raw-loader'
                 ]
             },
             {
@@ -77,7 +90,9 @@ module.exports = {
         new CopyWebpackPlugin([
             { from: '404.html' },
             { from: 'spa-redirect.js' }
-        ])
+        ]),
+        
+        UglifyPlugin
     ],
 
     devServer: {

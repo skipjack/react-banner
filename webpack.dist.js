@@ -43,6 +43,7 @@ module.exports = {
 
     plugins: [
         new ExtractTextPlugin('style.css'),
+        
         new Webpack.optimize.UglifyJsPlugin({
             comments: false
         })
