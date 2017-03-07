@@ -5,6 +5,6 @@ import Site from './site/site'
 
 render((
     <Router history={ browserHistory }>
-        <Route path="/*" component={ Site } />
+        <Route path="/(:section)(/:page)" component={ Site } />
     </Router>
 ), document.querySelector('#root'))
