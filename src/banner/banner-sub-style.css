@@ -7,12 +7,14 @@
     min-width: 320px;
     max-width: 960px;
     margin: 0 auto;
-    padding: 0.25em 1.5em;
+    padding: 0 1.5em;
     text-align: right;
 }
 
 .banner-sub__link {
+    display: inline-block;
     font-size: 0.8em;
+    padding: 0.4em 0;
     color: whitesmoke;
     text-transform: uppercase;
     text-decoration: none;
