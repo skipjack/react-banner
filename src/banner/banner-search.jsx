@@ -5,11 +5,16 @@ export default class BannerSearch extends Component {
     static propTypes = {
         blockName: PropTypes.string.isRequired,
         active: PropTypes.bool.isRequired,
+        placeholder: PropTypes.string,
         onToggle: PropTypes.func.isRequired
     }
 
+    static defaultProps = {
+        placeholder: 'Search this site...'
+    }
+
     render() {
-        let { blockName, active } = this.props,
+        let { blockName, active, placeholder } = this.props,
             activeMod = active ? `${blockName}--active` : ''
 
         return (
@@ -18,7 +23,7 @@ export default class BannerSearch extends Component {
                     ref={ ref => this._input = ref }
                     className={ `${blockName}__input` }
                     type="text"
-                    placeholder="Search the site..." />
+                    placeholder={ placeholder } />
 
                 <button
                     className={ `${blockName}__icon ${blockName}__clear` }
