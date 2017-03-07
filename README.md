@@ -21,14 +21,13 @@ The following example shows the most basic setup possible. Note that it assumes 
 ```javascript
 import React from 'react'
 import Banner from 'react-banner'
-import SPALink from 'react-banner/links/spa-link'
-import 'react-banner/'
+import 'react-banner/dist/style.css'
 
 export default props => {
     return (
         <Banner
             logo="React Banner"
-            link={ SPALink }
+            url={ window.location.pathname }
             links={[
                 { "title": "Example Link", "url": "/example" },
                 { "title": "Another", "url": "/another" },
@@ -37,13 +36,12 @@ export default props => {
                     { "title": "Jill", "url": "/children/jill" },
                     { "title": "Jack", "url": "/children/jack" }
                 ]}
-            ]}
-            url={ window.location.pathname } />
+            ]} />
     )
 }
 ```
 
-> Note: Here the `SPALink` (single page application link) is used. This is dependent on [react-router][5]. There is also a `StandardLink` component that just uses a simple `<a ...>` tag behind the scenes and will provide normal navigation. If neither of these fit your needs, please see our [docs on creating a custom link component][6].
+> **Note:** Here the `SPALink` (single page application link) is used. This is dependent on [react-router][5]. There is also a `StandardLink` component that just uses a simple `<a ...>` tag behind the scenes and will provide normal navigation. If neither of these fit your needs, please see our [docs on creating a custom link component][6].
 
 See the [full documentation][2] for more in-depth usage, demos, and examples on how to integrate it with other open-source react components like [react-headroom][3] and [react-sidebar][4].
 
