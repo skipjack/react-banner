@@ -13,6 +13,10 @@
         "react"
     ],
 
+    "globals": {
+        "PRODUCTION": true
+    },
+
     "rules": {
         "no-undef": 2,
         "no-unreachable": 2,

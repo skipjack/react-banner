@@ -134,17 +134,23 @@ export default class Banner extends Component {
      * @param {string} url - The URL to test against
      * @return {bool} - Whether or not the given link is active
      */
-    _isActive(link, url) {
+    _isActive(link = {}, url = '') {
+        var urlToTest = link.url || ''
+
+        if (urlToTest.length > 1) {
+            urlToTest = urlToTest.replace(/^\//, '')
+        }
+
         if (url.length > 1) {
             return (
-                url.endsWith(link.url) ||
-                url.includes(`${link.url}/`)
+                url.endsWith( urlToTest ) ||
+                url.includes( `${urlToTest}/` )
             )
 
         } else if (url === '/') {
             return (
-                link.url === '/' ||
-                link.url === ''
+                urlToTest === '/' ||
+                urlToTest === ''
             )
 
         } else return false

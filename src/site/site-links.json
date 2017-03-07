@@ -1,19 +1,19 @@
 [
     {
         "title": "Getting Started",
-        "url": "https://skipjack.github.io/react-banner"
+        "url": "/"
     },
     {
         "title": "Customization",
-        "url": "customization"
+        "url": "/customization"
     },
     {
         "title": "Examples",
-        "url": "examples",
+        "url": "/examples",
         "children": [
-            { "title": "React Router", "url": "examples/router" },
-            { "title": "React Sidebar", "url": "examples/sidebar" },
-            { "title": "React Headroom", "url": "examples/headroom" }
+            { "title": "React Router", "url": "/examples/router" },
+            { "title": "React Sidebar", "url": "/examples/sidebar" },
+            { "title": "React Headroom", "url": "/examples/headroom" }
         ]
     },
     {

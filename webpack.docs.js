@@ -91,6 +91,10 @@ module.exports = {
             { from: '404.html' },
             { from: 'spa-redirect.js' }
         ]),
+
+        new Webpack.DefinePlugin({
+            PRODUCTION: Production
+        }),
         
         UglifyPlugin
     ],
