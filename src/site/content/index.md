@@ -16,7 +16,7 @@ You can also grab the minified JavaScript and CSS straight from `/dist` and incl
 
 ## Quick Start
 
-The following example shows the most basic setup possible. Note that it assumes a webpack environment, with a pre-processor like [babel][1] enabled to allow ES2015...
+The following example shows the most basic setup possible. Note that it assumes a webpack environment, with a pre-processor like [babel][1] enabled to allow ES2015 and JSX...
 
 ```javascript
 import React from 'react'
