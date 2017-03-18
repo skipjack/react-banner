@@ -7,16 +7,16 @@ import { Link } from 'react-router'
  * @param {object} props - Link options containing at least a `url`
  * @return {object} - Markup for the link
  */
-export default ({ url, ...props }) => {
+export default ({ index, url, ...props }) => {
     if ( url.match(/^https?:/) ) {
         return (
-            <a { ...props } href={ url }>
+            <a { ...props } href={ index || url }>
                 { props.children }
             </a>
         )
 
     } else return (
-        <Link { ...props } to={ url }>
+        <Link { ...props } to={ index || url }>
             { props.children }
         </Link>
     )
