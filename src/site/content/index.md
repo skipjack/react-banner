@@ -26,7 +26,7 @@ import 'react-banner/dist/style.css'
 export default props => {
     return (
         <Banner
-            logo="React Banner"
+            logo="My Logo"
             url={ window.location.pathname }
             links={[
                 { "title": "Example Link", "url": "/example" },

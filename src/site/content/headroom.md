@@ -1,9 +1,9 @@
-React Banner does not provide any built-in "sticky-ness" but can easily be integrated with things like [React Headroom][1] to achieve this behavior.
+React Banner does not provide any built-in "sticky-ness" but can easily be integrated with things like [React Headroom][1] to achieve this behavior. In fact, that's exactly what we're using to implement the behavior on this site -- try scrolling on any page and notice how the banner fixes and unfixes itself to and from the top of the page.
 
 
 ## Basic Setup
 
-Going forward with our simple example, you would simply `npm install react-headroom --save` and update the code as such:
+Going forward with our original example, you would `npm install react-headroom --save` and update the code as such:
 
 ```javascript
 import React from 'react'
@@ -16,7 +16,7 @@ export default props => {
     return (
         <Headroom>
             <Banner
-                logo="React Banner"
+                logo="My Logo"
                 url={ window.location.pathname }
                 links={[
                     { "title": "Example Link", "url": "/example" },
