@@ -41,8 +41,6 @@ export default props => {
 }
 ```
 
-> **Note:** Here the `SPALink` (single page application link) is used. This is dependent on [react-router][5]. There is also a `StandardLink` component that just uses a simple `<a ...>` tag behind the scenes and will provide normal navigation. If neither of these fit your needs, please see our [docs on creating a custom link component][6].
-
 See the [full documentation][2] for more in-depth usage, demos, and examples on how to integrate it with other open-source react components like [react-headroom][3] and [react-sidebar][4].
 
 
@@ -50,5 +48,3 @@ See the [full documentation][2] for more in-depth usage, demos, and examples on 
 [2]: https://skipjack.github.io/react-banner/
 [3]: https://skipjack.github.io/react-banner/examples/headroom
 [4]: https://skipjack.github.io/react-banner/examples/sidebar
-[5]: https://github.com/ReactTraining/react-router
-[6]: #

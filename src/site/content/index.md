@@ -41,9 +41,7 @@ export default props => {
 }
 ```
 
-> **Note:** Here the `SPALink` (single page application link) is used. This is dependent on [react-router][4]. There is also a `StandardLink` component that just uses a simple `<a ...>` tag behind the scenes and will provide normal navigation. If neither of these fit your needs, please see our [docs on creating a custom link component][5].
-
-Please see the [customization page][5] to see a full list of props and notes on custom styling.
+Please see the [customization page][4] to see a full list of props, custom links, and notes on custom styling.
 
 
 ## Integration
@@ -54,5 +52,4 @@ See the examples section to learn how to integrate this component with other ope
 [1]: https://babeljs.io/
 [2]: ./integration/headroom
 [3]: ./integration/sidebar
-[4]: https://github.com/ReactTraining/react-router
-[5]: ./customization
+[4]: ./customization
