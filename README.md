@@ -1,4 +1,4 @@
-# react-banner <sup>beta</sup>
+# react-banner
 
 A flexible banner component, available as a react plugin.
 
