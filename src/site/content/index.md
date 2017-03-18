@@ -52,7 +52,7 @@ See the examples section to learn how to integrate this component with other ope
 
 
 [1]: https://babeljs.io/
-[2]: https://skipjack.github.io/react-banner/examples/headroom
-[3]: https://skipjack.github.io/react-banner/examples/sidebar
+[2]: ./integration/headroom
+[3]: ./integration/sidebar
 [4]: https://github.com/ReactTraining/react-router
-[5]: https://skipjack.github.io/react-banner/customization
+[5]: ./customization

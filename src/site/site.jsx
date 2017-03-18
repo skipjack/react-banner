@@ -84,7 +84,7 @@ export default class Site extends React.Component {
     get _page() {
         let { params } = this.props,
             { section = 'index', page = section } = params,
-            content = Pages[page] || '# Page Not Found'
+            content = Pages[page] || '## Page Not Found'
 
         return MRTC(content).tree
     }

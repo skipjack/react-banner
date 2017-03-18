@@ -90,4 +90,4 @@ Below are some design variations people have come up with. If you work some magi
 [3]: https://github.com/skipjack/react-banner/tree/master/src/links
 [4]: https://github.com/skipjack/react-banner/blob/master/dist/style.css
 [5]: mailto:greg.venech@gmail.com
-[6]: 
+[6]: http://fontawesome.io/
