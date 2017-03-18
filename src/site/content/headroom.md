@@ -1,5 +1,45 @@
 React Banner does not provide any built-in "sticky-ness" but can easily be integrated with things like [React Headroom][1] to achieve this behavior.
 
-*More information coming soon...*
+
+## Basic Setup
+
+Going forward with our simple example, you would simply `npm install react-headroom --save` and update the code as such:
+
+```javascript
+import React from 'react'
+import Banner from 'react-banner'
+import Headroom from 'react-headroom' // Import it
+import 'react-banner/dist/style.css'
+
+export default props => {
+    // Wrap it around your banner
+    return (
+        <Headroom>
+            <Banner
+                logo="React Banner"
+                url={ window.location.pathname }
+                links={[
+                    { "title": "Example Link", "url": "/example" },
+                    { "title": "Another", "url": "/another" },
+                    { "title": "Link w/ Children", "url": "/children", "children": [
+                        { "title": "John", "url": "/children/john" },
+                        { "title": "Jill", "url": "/children/jill" },
+                        { "title": "Jack", "url": "/children/jack" }
+                    ]}
+                ]} />
+        </Headroom>
+    )
+}
+```
+
+
+## Configuration with React Sidebar
+
+Making this component play nicely with [react-sidebar][2] is a bit trickier but can still be done. You'll need to store your main content element and pass it as the `parent` prop to `<Headroom>`. See the [main component][3] used to generate this documentation for an example.
+
+For more details please see the headroom component's [documentation][1].
+
 
 [1]: https://github.com/KyleAMathews/react-headroom
+[2]: ./integration/sidebar
+[3]: https://github.com/skipjack/react-banner/blob/master/src/site/site.jsx
