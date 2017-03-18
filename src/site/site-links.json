@@ -8,12 +8,13 @@
         "url": "/customization"
     },
     {
-        "title": "Examples",
-        "url": "/examples",
+        "title": "Integration",
+        "url": "/integration",
+        "index": "/integration/headroom",
         "children": [
-            { "title": "React Router", "url": "/examples/router" },
-            { "title": "React Sidebar", "url": "/examples/sidebar" },
-            { "title": "React Headroom", "url": "/examples/headroom" }
+            { "title": "React Router", "url": "/integration/router" },
+            { "title": "React Sidebar", "url": "/integration/sidebar" },
+            { "title": "React Headroom", "url": "/integration/headroom" }
         ]
     },
     {
