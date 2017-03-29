@@ -154,6 +154,10 @@
     color: #fff;
 }
 
+.banner__link--offset {
+    margin-right: -1.5em;
+}
+
 .banner--search .banner__link {
     pointer-events: none;
     overflow: hidden;
