@@ -110,15 +110,22 @@ export default class Banner extends Component {
      * @return {array} - An array of components
      */
     get _links() {
-        let { blockName, links, link: Link, url } = this.props
+        let { 
+            blockName, 
+            links, 
+            link: Link, 
+            search,
+            url 
+        } = this.props
 
-        return links.map(link => {
+        return links.map((link, index) => {
             let active = this._isActive(link, url),
-                activeMod = active ? `${blockName}__link--active` : ''
+                activeMod = active ? `${blockName}__link--active` : '',
+                offsetMod = !search && (links.length - 1) === index ? `${blockName}__link--offset` : ''
 
             return (
                 <Link
-                    className={ `${blockName}__link ${activeMod}` }
+                    className={ `${blockName}__link ${activeMod} ${offsetMod}` }
                     key={ `${blockName}__link-${link.title}` }
                     { ...link }>
                     { link.title }
