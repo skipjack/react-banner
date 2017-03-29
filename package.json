@@ -2,7 +2,7 @@
   "name": "react-banner",
   "version": "0.1.4",
   "description": "A flexible banner component.",
-  "main": "react-banner.min.js",
+  "main": "dist/react-banner.min.js",
   "scripts": {
     "build": "npm run build:lib && npm run build:docs",
     "build:lib": "webpack --config webpack.dist.js",
