@@ -1,6 +1,6 @@
 {
   "name": "react-banner",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A flexible banner component.",
   "main": "dist/react-banner.min.js",
   "scripts": {
