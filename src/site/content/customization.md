@@ -45,13 +45,6 @@ A callback fired whenever the user submits a search.
 A callback fired every time the user types in the search field.
 
 
-## Custom Links
-
-Passing a custom link component can be an easy way to extend the navigation section of the banner. For example, you could pass a custom component that acts as a dropdown to render `children` if your site contains a large amount of pages.
-
-There are two pre-built link components provided in the `/src/links` directory: `StandardLink` being the default while `SPALink` can be used for single page applications using react-router (like this site, for example). The data from each link object, described below, is spread onto this component as props as well as a BEM element class name and active modifier class (if the link is active). To create your own link component, please see the [two defaults][3] and start from there.
-
-
 ## Link Data
 
 Each link object **MUST** contain `title` and `url` properties. This component will also handle the first level of `children` link objects by displaying a secondary navigation menu under the main banner. Any more levels of nested `children` would have to be handled using a custom link component (described above) or in another part of your site. Here's an example of a valid link object:
@@ -74,6 +67,63 @@ Note that anything renderable is allowed in the link's `title` prop, e.g. the fo
 ```
 
 > **Note:** The icon code shown above is dependent on having an icon font available (e.g. [font awesome][6]). However you could also render a full SVG, component, or anything else in the same manner.
+
+
+## Custom Links
+
+Passing a custom link component can be an easy way to extend the navigation section of the banner. For example, you could pass a custom component that acts as a dropdown to render `children` if your site contains a large amount of pages.
+
+There are two pre-built link components provided in the `/src/links` directory: `StandardLink` being the default while `SPALink` can be used for single page applications using react-router (like this site, for example). The data from each link object, described below, is spread onto this component as props as well as a BEM element class name and active modifier class (if the link is active). 
+
+The two components above, however, are more for demonstration purposes and not very customizable. We recommend creating your own link component, using the [two defaults][3] for inspiration. For example, you could use HTML5 history API manually:
+
+```js
+// ... import dependencies and such
+
+class CustomLink extends React.Component {
+    render() {
+        let { index, url, ...otherProps } = this.props
+
+        return (
+            <a 
+                { ...otherProps } 
+                href={ index || url }
+                onClick={ this._navigate.bind(this, index || url)>
+                { props.children }
+            </a>
+        )
+    }
+
+    _navigate(url = '', event) {
+        if ( !url.match(/^https?:/) ) {
+            event.preventDefault()
+            history.pushState({
+                some: 'state'
+            }, 'MyTitle', url)
+        }
+    }
+}
+
+export default props => {
+    return (
+        <Banner
+            logo="My Logo"
+            url={ window.location.pathname }
+            link={ CustomLink } // Pass our custom link component
+            links={[
+                { "title": "Example Link", "url": "/example" },
+                { "title": "Another", "url": "/another" },
+                { "title": "Link w/ Children", "url": "/children", "children": [
+                    { "title": "John", "url": "/children/john" },
+                    { "title": "Jill", "url": "/children/jill" },
+                    { "title": "Jack", "url": "/children/jack" }
+                ]}
+            ]} />
+    )
+}
+```
+
+> **Note:** If all you'd like to customize is the styling of links, there is no need to pass a custom component. Simply fork and edit the stylesheet as you wish.
 
 
 ## The Stylesheet
