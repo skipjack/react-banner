@@ -1,6 +1,6 @@
 import Path from 'path'
 import Webpack from 'webpack'
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 export default {
     context: Path.resolve(__dirname, './src'),
