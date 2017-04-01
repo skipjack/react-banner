@@ -14,7 +14,7 @@ var UglifyPlugin = Production ? new Webpack.optimize.UglifyJsPlugin({
 
 module.exports = {
     context: Path.resolve(__dirname, './src'),
-    entry: './docs.js',
+    entry: './docs.jsx',
 
     output: {
         path: Path.resolve(__dirname, './docs'),

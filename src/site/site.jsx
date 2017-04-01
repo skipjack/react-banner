@@ -1,4 +1,5 @@
 import React from 'react'
+import { Route, Switch } from 'react-router-dom'
 import MRTC from 'markdown-to-react-components'
 import Prism from 'prismjs'
 import Headroom from 'react-headroom'
@@ -11,14 +12,21 @@ import './site-style'
 import 'prismjs/themes/prism'
 
 // Load Pages (simplify a multi import with webpack 2 or migrate to a static site generator)
-import index from './content/index'
-import customization from './content/customization'
-import router from './content/router'
-import sidebar from './content/sidebar'
-import headroom from './content/headroom'
-const Pages = { index, customization, router, sidebar, headroom }
+import IndexContent from './content/index'
+import CustomizationContent from './content/customization'
+import RouterContent from './content/router'
+import SidebarContent from './content/sidebar'
+import HeadroomContent from './content/headroom'
 
 const block = 'site'
+
+const ContentWrapper = ({ markdown }) => {
+    return (
+        <div className={ `${block}__container` }>
+            { MRTC(markdown).tree }
+        </div>
+    )
+}
 
 export default class Site extends React.Component {
     state = {
@@ -27,6 +35,8 @@ export default class Site extends React.Component {
     }
 
     render() {
+        let { match } = this.props
+
         return (
             <Sidebar
                 contentClassName={ block }
@@ -51,9 +61,23 @@ export default class Site extends React.Component {
                 </Headroom>
 
                 <main className={ `${block}__content` }>
-                    <div className={ `${block}__container` }>
-                        { this._page }
-                    </div>
+                    <Switch>
+                        <Route exact path={ match.url }>
+                            <ContentWrapper markdown={ IndexContent } />
+                        </Route>
+                        <Route path={ `${match.url}customization` }>
+                            <ContentWrapper markdown={ CustomizationContent } />
+                        </Route>
+                        <Route path={ `${match.url}integration/headroom` }>
+                            <ContentWrapper markdown={ HeadroomContent } />
+                        </Route>
+                        <Route path={ `${match.url}integration/sidebar` }>
+                            <ContentWrapper markdown={ SidebarContent } />
+                        </Route>
+                        <Route path={ `${match.url}integration/router` }>
+                            <ContentWrapper markdown={ RouterContent } />
+                        </Route>
+                    </Switch>
                 </main>
 
                 <footer className={ `${block}__footer` }>
@@ -79,13 +103,5 @@ export default class Site extends React.Component {
 
     _openSidebar = () => {
         this._toggleSidebar(true)
-    }
-
-    get _page() {
-        let { params } = this.props,
-            { section = 'index', page = section } = params,
-            content = Pages[page] || '## Page Not Found'
-
-        return MRTC(content).tree
     }
 }

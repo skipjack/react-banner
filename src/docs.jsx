@@ -1,15 +1,10 @@
 import React from 'react'
-import { Router, Route, useRouterHistory } from 'react-router'
-import { createHistory } from 'history'
 import { render } from 'react-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import Site from './site/site'
 
-const history = useRouterHistory(createHistory)({
-    basename: PRODUCTION ? '/react-banner' : '/'
-})
-
 render((
-    <Router history={ history }>
-        <Route path="/(:section)(/:page)" component={ Site } />
-    </Router>
+    <BrowserRouter basename={ PRODUCTION ? '/react-banner' : '/' }>
+        <Route path="/" component={ Site } />
+    </BrowserRouter>
 ), document.querySelector('#root'))

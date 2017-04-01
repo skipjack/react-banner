@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { NavLink } from 'react-router-dom'
 
 /**
  * React router stateless link component
@@ -16,8 +16,8 @@ export default ({ index, url, ...props }) => {
         )
 
     } else return (
-        <Link { ...props } to={ index || url }>
+        <NavLink { ...props } to={ index || url }>
             { props.children }
-        </Link>
+        </NavLink>
     )
 }
