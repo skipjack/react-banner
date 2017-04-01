@@ -1,48 +1,58 @@
-var Path = require('path');
-var Webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+import Path from 'path'
+import Webpack from 'webpack'
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-module.exports = {
+export default {
     context: Path.resolve(__dirname, './src'),
     entry: './banner/banner.jsx',
 
     resolve: {
-        extensions: [ '', '.js', '.jsx', '.css' ]
+        extensions: [ '.js', '.jsx', '.css' ]
     },
 
     module: {
         loaders: [
             {
                 test: /\.jsx?$/,
-                loaders: [
+                exclude: /node_modules/,
+                use: [
                     'babel-loader', 
-                    'eslint-loader'
-                ],
-                exclude: /node_modules/
+                    {
+                        loader: 'eslint-loader',
+                        options: {
+                            fix: true,
+                            configFile: Path.resolve(__dirname, './.eslintrc')
+                        }
+                    }
+                ]
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract(
-                    'style-loader',
-                    'css-loader?minimize=false'
-                )
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                minimize: false
+                            }
+                        }
+                    ]
+                })
             },
             {
                 test: /\.svg$/,
-                loaders: [
+                use: [
                     'file-loader'
                 ]
             }
         ]
     },
 
-    eslint: {
-        fix: true,
-        configFile: Path.resolve(__dirname, './.eslintrc')
-    },
-
     plugins: [
-        new ExtractTextPlugin('style.css'),
+        new ExtractTextPlugin({
+            filename: 'style.css'
+        }),
         
         new Webpack.optimize.UglifyJsPlugin({
             comments: false
