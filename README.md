@@ -46,5 +46,5 @@ See the [full documentation][2] for more in-depth usage, demos, and examples on 
 
 [1]: https://babeljs.io/
 [2]: https://skipjack.github.io/react-banner/
-[3]: https://skipjack.github.io/react-banner/examples/headroom
-[4]: https://skipjack.github.io/react-banner/examples/sidebar
+[3]: https://skipjack.github.io/react-banner/integration/headroom
+[4]: https://skipjack.github.io/react-banner/integration/sidebar
