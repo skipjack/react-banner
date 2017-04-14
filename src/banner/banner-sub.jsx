@@ -1,7 +1,13 @@
 import React from 'react'
 import './banner-sub-style'
 
-export default ({ blockName, link: Link, sublinks = [], url, isActive }) => {
+export default ({ 
+    blockName, 
+    link: Link, 
+    sublinks = [], 
+    url, 
+    isActive 
+}) => {
     return (
         <div className={ blockName }>
             <div className={ `${blockName}__inner` }>
