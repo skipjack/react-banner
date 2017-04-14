@@ -1,10 +1,11 @@
-import React, { Component, PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import BannerSearch from './banner-search'
 import BannerSub from './banner-sub'
 import StandardLink from '../links/standard-link'
 import './banner-style'
 
-export default class Banner extends Component {
+export default class Banner extends React.Component {
     static propTypes = {
         blockName: PropTypes.string,
         className: PropTypes.string,

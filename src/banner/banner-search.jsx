@@ -1,7 +1,8 @@
-import React, { PropTypes, Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import './banner-search-style'
 
-export default class BannerSearch extends Component {
+export default class BannerSearch extends React.Component {
     static propTypes = {
         blockName: PropTypes.string.isRequired,
         active: PropTypes.bool.isRequired,
