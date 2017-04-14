@@ -13,7 +13,7 @@ export default class Banner extends React.Component {
         url: PropTypes.string.isRequired,
         link: PropTypes.oneOfType([ 
             PropTypes.func, 
-            PropTypes.instanceOf(Component) 
+            PropTypes.instanceOf(React.Component) 
         ]),
         links: PropTypes.arrayOf( 
             PropTypes.object 
