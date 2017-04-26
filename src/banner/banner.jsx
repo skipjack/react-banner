@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import BannerSearch from './banner-search'
 import BannerSub from './banner-sub'
 import StandardLink from '../links/standard-link'
+import HamburgerIcon from '../icons/hamburger-icon'
+import CrossIcon from '../icons/cross-icon'
+import SearchIcon from '../icons/search-icon'
 import './banner-style'
 
 export default class Banner extends React.Component {
@@ -11,6 +14,11 @@ export default class Banner extends React.Component {
         className: PropTypes.string,
         logo: PropTypes.node,
         url: PropTypes.string.isRequired,
+        icons: PropTypes.shape({
+            menu: PropTypes.node.isRequired,
+            clear: PropTypes.node.isRequired,
+            search: PropTypes.node.isRequired
+        }),
         link: PropTypes.oneOfType([ 
             PropTypes.func, 
             PropTypes.instanceOf(React.Component) 
@@ -29,7 +37,12 @@ export default class Banner extends React.Component {
         className: '',
         link: StandardLink,
         search: true,
-        links: []
+        links: [],
+        icons: {
+            menu: <HamburgerIcon />,
+            clear: <CrossIcon />,
+            search: <SearchIcon />
+        }
     }
 
     state = {
@@ -50,16 +63,7 @@ export default class Banner extends React.Component {
                     <button 
                         className={ `${blockName}__mobile` } 
                         onClick={ this.props.onMenuClick }>
-                        <svg viewBox="-62 138 25 25">
-                            <g>
-                                <path d="M-60.2,140.2h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0
-                                    C-62,141-61.2,140.2-60.2,140.2z"/>
-                                <path d="M-60.2,148.7h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0
-                                    C-62,149.5-61.2,148.7-60.2,148.7z"/>
-                                <path d="M-60.2,157.2h20.9c1,0,1.8,0.8,1.8,1.8l0,0c0,1-0.8,1.8-1.8,1.8h-20.9c-1,0-1.8-0.8-1.8-1.8l0,0
-                                    C-62,158-61.2,157.2-60.2,157.2z"/>
-                            </g>
-                        </svg>
+                        { this.props.icons.menu }
                     </button>
 
                     <Link className={ `${blockName}__logo` } url="/">
@@ -72,6 +76,7 @@ export default class Banner extends React.Component {
 
                     { this.props.search ? (
                         <BannerSearch
+                            icons={ this.props.icons }
                             blockName={ `${blockName}-search` }
                             active={ this.state.searching }
                             onToggle={ this._toggleSearch } />
