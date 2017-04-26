@@ -131,9 +131,9 @@ export default class Banner extends React.Component {
 
             return (
                 <Link
+                    { ...link }
                     className={ `${blockName}__link ${activeMod} ${offsetMod}` }
-                    key={ `${blockName}__link-${link.title}` }
-                    { ...link }>
+                    key={ `${blockName}__link-${link.title}` }>
                     { link.title }
                 </Link>
             )
