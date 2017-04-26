@@ -7,8 +7,15 @@ import { NavLink } from 'react-router-dom'
  * @param {object} props - Link options containing at least a `url`
  * @return {object} - Markup for the link
  */
-export default ({ index, url, ...props }) => {
-    if ( url.match(/^https?:/) ) {
+export default ({ 
+    index = '', 
+    url = '',
+    reload = false,
+    ...props 
+}) => {
+    props.title = typeof title === 'string' ? title : null
+
+    if ( reload || url.match(/^https?:/) ) {
         return (
             <a { ...props } href={ index || url }>
                 { props.children }
