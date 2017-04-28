@@ -8,6 +8,7 @@
     "build:lib": "webpack --config webpack.dist.babel.js",
     "build:docs": "webpack --config webpack.docs.babel.js",
     "release": "standard-version",
+    "watch": "webpack --watch --config webpack.dist.babel.js",
     "start": "webpack-dev-server --config webpack.docs.babel.js --env.dev",
     "test": "npm prune && npm install && npm start"
   },
