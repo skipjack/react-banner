@@ -125,14 +125,15 @@ export default class Banner extends React.Component {
         } = this.props
 
         return links.map((link, index) => {
-            let active = this._isActive(link, url),
+            let { className = '' } = link,
+                active = this._isActive(link, url),
                 activeMod = active ? `${blockName}__link--active` : '',
                 offsetMod = !search && (links.length - 1) === index ? `${blockName}__link--offset` : ''
 
             return (
                 <Link
                     { ...link }
-                    className={ `${blockName}__link ${activeMod} ${offsetMod}` }
+                    className={ `${blockName}__link ${activeMod} ${offsetMod} ${className}` }
                     key={ `${blockName}__link-${index}` }>
                     { link.title }
                 </Link>
