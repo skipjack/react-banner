@@ -13,7 +13,7 @@ export default ({
     reload = false,
     ...props 
 }) => {
-    props.title = typeof title === 'string' ? title : null
+    props.title = typeof props.title === 'string' ? props.title : null
 
     if ( reload || url.match(/^https?:/) ) {
         return (
