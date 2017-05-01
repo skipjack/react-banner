@@ -1,0 +1,12 @@
+# Logs
+npm-debug.log*
+
+# Dependency Directories
+node_modules
+
+# Docs Related
+src
+!src/banner
+!src/icons
+!src/links
+docs
