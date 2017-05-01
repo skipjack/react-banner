@@ -23,7 +23,7 @@ export default ({
         )
 
     } else return (
-        <NavLink { ...props } to={ index || url }>
+        <NavLink { ...props } to={ index || url } activeClassName="">
             { props.children }
         </NavLink>
     )
