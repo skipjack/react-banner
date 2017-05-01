@@ -12,12 +12,12 @@ export default ({
         <div className={ blockName }>
             <div className={ `${blockName}__inner` }>
                 {
-                    sublinks.map(sublink => {
+                    sublinks.map((sublink, index) => {
                         let activeMod = isActive(sublink, url) ? `${blockName}__link--active` : ''
 
                         return (
                             <Link
-                                key={ `${blockName}__link-${sublink.title}` }
+                                key={ `${blockName}__link-${index}` }
                                 className={ `${blockName}__link ${activeMod}` }
                                 { ...sublink }>
                                 { sublink.title }
