@@ -149,29 +149,13 @@ export default class Banner extends React.Component {
      * @return {bool} - Whether or not the given link is active
      */
     _isActive(link = {}, url = '') {
-        var urlToTest = link.url
+        var testUrl = link.url,
+            regex = new RegExp(`^${testUrl}\/?`)
 
-        if (typeof urlToTest !== 'string') {
-            return false
-        }
-
-        if (urlToTest.length > 1) {
-            urlToTest = urlToTest.replace(/^\//, '')
-        }
-
-        if (url.length > 1) {
-            return (
-                url.endsWith( urlToTest ) ||
-                url.includes( `${urlToTest}/` )
-            )
-
-        } else if (url === '/') {
-            return (
-                urlToTest === '/' ||
-                urlToTest === ''
-            )
-
-        } else return false
+        return (
+            testUrl === url ||
+            testUrl !== '/' ? url.match(regex) : false
+        )
     }
 
     /**
