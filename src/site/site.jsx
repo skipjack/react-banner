@@ -2,7 +2,6 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import MRTC from 'markdown-to-react-components'
 import Prism from 'prismjs'
-import Headroom from 'react-headroom'
 import Sidebar from 'react-sidebar'
 import Banner from '../banner/banner'
 import Logo from '../logo/logo'
@@ -30,8 +29,7 @@ const ContentWrapper = ({ markdown }) => {
 
 export default class Site extends React.Component {
     state = {
-        sidebar: false,
-        element: null
+        sidebar: false
     }
 
     render() {
@@ -49,16 +47,13 @@ export default class Site extends React.Component {
                 )}
                 open={ this.state.sidebar }
                 onSetOpen={ this._toggleSidebar }>
-                <Headroom 
-                    disable={ this.state.element === null }
-                    parent={ () => this.state.element }>
-                    <Banner
-                        logo="React Banner"
-                        link={ SPALink }
-                        links={ SiteLinks }
-                        url={ this.props.location.pathname }
-                        onMenuClick={ this._openSidebar } />
-                </Headroom>
+                <Banner
+                    className={ `${block}__banner` }
+                    logo="React Banner"
+                    link={ SPALink }
+                    links={ SiteLinks }
+                    url={ this.props.location.pathname }
+                    onMenuClick={ this._openSidebar } />
 
                 <main className={ `${block}__content` }>
                     <Switch>
@@ -87,12 +82,6 @@ export default class Site extends React.Component {
                 </footer>
             </Sidebar>
         )
-    }
-
-    componentDidMount() {
-        this.setState({
-            element: document.querySelector(`.${block}`)
-        })
     }
 
     _toggleSidebar = visible => {

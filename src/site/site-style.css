@@ -69,6 +69,11 @@ p > code {
     padding: 1.5em;
 }
 
+.site__banner {
+    position: sticky;
+    top: 0;
+}
+
 .site__content {
     flex: 1 1 auto;
     line-height: 1.5;
