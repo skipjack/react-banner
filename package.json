@@ -29,7 +29,8 @@
   },
   "homepage": "https://github.com/skipjack/react-banner#readme",
   "peerDependencies": {
-    "react": "^15.0.0"
+    "react": "^15.x || 16.x",
+    "prop-types": "^15.5.8"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
@@ -50,6 +51,7 @@
     "json-loader": "^0.5.4",
     "markdown-to-react-components": "^0.2.4",
     "prismjs": "^1.6.0",
+    "prop-types": "^15.6.0",
     "raw-loader": "^0.5.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
@@ -60,8 +62,5 @@
     "style-loader": "^0.18.1",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2"
-  },
-  "dependencies": {
-    "prop-types": "^15.5.8"
   }
 }
