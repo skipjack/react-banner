@@ -1,0 +1,21 @@
+.search-results {
+    margin-top: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px #999;
+    background: white;
+    overflow: hidden;
+}
+
+.search-results__link {
+    background: white;
+    transition: background 250ms;
+}
+
+.search-results__link:hover {
+    background: rgba(141, 214, 249, 0.1);
+}
+
+.search-results__footer {
+    margin-right: 10.66667px;
+    margin-bottom: 8px;
+}
