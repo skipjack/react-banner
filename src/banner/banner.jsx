@@ -27,6 +27,7 @@ export default class Banner extends React.Component {
             PropTypes.object 
         ),
         search: PropTypes.bool.isRequired,
+        searchResults: PropTypes.node,
         onMenuClick: PropTypes.func,
         onSearch: PropTypes.func,
         onSearchTyping: PropTypes.func
@@ -79,7 +80,10 @@ export default class Banner extends React.Component {
                             icons={ this.props.icons }
                             blockName={ `${blockName}-search` }
                             active={ this.state.searching }
-                            onToggle={ this._toggleSearch } />
+                            searchResults={ this.props.searchResults }
+                            onToggle={ this._toggleSearch }
+                            onSearch={ this.props.onSearch }
+                            onSearchTyping={ this.props.onSearchTyping } />
                     ) : null }
                 </section>
 

@@ -1,5 +1,6 @@
 .banner-search {
     flex: 0 0 auto;
+    position: relative;
     display: flex;
     justify-content: flex-end;
 }
@@ -54,4 +55,12 @@
 
 .banner-search--active .banner-search__clear {
     display: block;
+}
+
+.banner-search__results {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    margin-top: 5px;
 }
