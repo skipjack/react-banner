@@ -150,7 +150,7 @@ export default class Banner extends React.Component {
      */
     _isActive(link = {}, url = '') {
         var testUrl = link.url,
-            regex = new RegExp(`^${testUrl}\/?`)
+            regex = new RegExp(`^${testUrl}/?`)
 
         return (
             testUrl === url ||
