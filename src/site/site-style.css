@@ -42,6 +42,11 @@ h6 {
     margin: 1em 0 0.6em;
 }
 
+pre > code {
+    padding: 0.5em 1em !important;
+    border-radius: 5px;
+}
+
 pre,
 p > code {
     font-size: 14px;
@@ -66,7 +71,7 @@ p > code {
 .site__container {
     max-width: 960px;
     margin: 0 auto;
-    padding: 1.5em;
+    padding: 0 1.5em;
 }
 
 .site__banner {
