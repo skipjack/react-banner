@@ -110,12 +110,21 @@ export default class Site extends React.Component {
             }))
     }
 
+    /**
+     * Toggle the state of the sidebar 
+     * 
+     * @param {boolean} visible - Indicates if the sidebar should be open
+     */
     _toggleSidebar = visible => {
         this.setState({
             sidebar: visible
         })
     }
 
+    /**
+     * Expands the sidebar
+     * 
+     */
     _openSidebar = () => {
         this._toggleSidebar(true)
     }
