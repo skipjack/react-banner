@@ -1,9 +1,11 @@
-React Banner does not provide any built-in "sticky-ness" but can easily be integrated with things like [React Headroom][1] to achieve this behavior. In fact, that's exactly what we're using to implement the behavior on this site -- try scrolling on any page and notice how the banner fixes and unfixes itself to and from the top of the page.
+React Banner does not provide any built-in "sticky-ness" but can easily be 
+integrated with things like [React Headroom][1] to achieve this behavior.
 
 
 ## Basic Setup
 
-Going forward with our original example, you would `npm install react-headroom --save` and update the code as such:
+Going forward with our original example, you would `npm install react-headroom 
+--save` and update the code as such:
 
 ```javascript
 import React from 'react'
@@ -35,7 +37,10 @@ export default props => {
 
 ## Configuration with React Sidebar
 
-Making this component play nicely with [react-sidebar][2] is a bit trickier but can still be done. You'll need to store your main content element and pass it as the `parent` prop to `<Headroom>`. See the [main component][3] used to generate this documentation for an example.
+Making this component play nicely with [react-sidebar][2] is a bit trickier but 
+can still be done. You'll need to store your main content element and pass it as 
+the `parent` prop to `<Headroom>`. See the [main component][3] used to generate 
+this documentation for an example.
 
 For more details please see the headroom component's [documentation][1].
 
