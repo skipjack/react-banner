@@ -33,6 +33,7 @@
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
+    "algoliasearch": "^3.24.5",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
     "babel-loader": "^7.0.0",
