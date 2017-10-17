@@ -1,31 +1,18 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import MRTC from 'markdown-to-react-components'
-import Prism from 'prismjs'
 import Sidebar from 'react-sidebar'
 import Banner from '../banner/banner'
 import Logo from '../logo/logo'
 import SPALink from '../links/spa-link'
 import SiteLinks from './site-links'
+
+// Load Styling
+import 'highlight.js/styles/ocean'
 import './site-style'
-import 'prismjs/themes/prism'
 
-// Load Pages (simplify a multi import with webpack 2 or migrate to a static site generator)
-import IndexContent from './content/index'
-import CustomizationContent from './content/customization'
-import RouterContent from './content/router'
-import SidebarContent from './content/sidebar'
-import HeadroomContent from './content/headroom'
-
+// Specify BEM block name
 const block = 'site'
 
-const ContentWrapper = ({ markdown }) => {
-    return (
-        <div className={ `${block}__container` }>
-            { MRTC(markdown).tree }
-        </div>
-    )
-}
 
 export default class Site extends React.Component {
     state = {
@@ -56,23 +43,15 @@ export default class Site extends React.Component {
                     onMenuClick={ this._openSidebar } />
 
                 <main className={ `${block}__content` }>
-                    <Switch>
-                        <Route exact path={ match.url }>
-                            <ContentWrapper markdown={ IndexContent } />
-                        </Route>
-                        <Route path={ `${match.url}customization` }>
-                            <ContentWrapper markdown={ CustomizationContent } />
-                        </Route>
-                        <Route path={ `${match.url}integration/headroom` }>
-                            <ContentWrapper markdown={ HeadroomContent } />
-                        </Route>
-                        <Route path={ `${match.url}integration/sidebar` }>
-                            <ContentWrapper markdown={ SidebarContent } />
-                        </Route>
-                        <Route path={ `${match.url}integration/router` }>
-                            <ContentWrapper markdown={ RouterContent } />
-                        </Route>
-                    </Switch>
+                    <div className={ `${block}__container` }>
+                        { this.state.loading ? (
+                            <span>Loading...</span>
+                        ) : (
+                            <div dangerouslySetInnerHTML={{
+                                __html: this.state.content
+                            }} />
+                        )}
+                    </div>
                 </main>
 
                 <footer className={ `${block}__footer` }>
@@ -82,6 +61,35 @@ export default class Site extends React.Component {
                 </footer>
             </Sidebar>
         )
+    }
+
+    componentDidMount() {
+        this._loadPage()
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        let { section, page } = this.props.match.params,
+            { params: prevParams } = prevProps.match
+
+        if ( section !== prevParams.section || page !== prevParams.page ) {
+            this._loadPage()
+        }
+    }
+
+    /**
+     * Dynamically load the current page based on the current route
+     * 
+     */
+    _loadPage() {
+        let { section = 'index', page } = this.props.match.params
+
+        this.setState({ loading: true })
+
+        import(`./content/${page || section}.md`)
+            .then(content => this.setState({
+                loading: false,
+                content: content
+            }))
     }
 
     _toggleSidebar = visible => {

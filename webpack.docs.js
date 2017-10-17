@@ -1,16 +1,19 @@
-import Path from 'path'
-import Webpack from 'webpack'
-import HTMLPlugin from 'html-webpack-plugin'
-import HTMLTemplate from 'html-webpack-template'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
+const Path = require('path')
+const Webpack = require('webpack')
+const HTMLPlugin = require('html-webpack-plugin')
+const HTMLTemplate = require('html-webpack-template')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-export default (env = {}) => ({
+module.exports = (env = {}) => ({
     devtool: 'source-map',
     context: Path.resolve(__dirname, './src'),
-    entry: './docs.jsx',
+    entry: [
+        'react-hot-loader/patch',
+        './docs.jsx'
+    ],
 
     resolve: {
-        extensions: [ '.js', '.jsx', '.json', '.css', '.md' ]
+        extensions: [ '.js', '.jsx', '.json', '.css' ]
     },
 
     module: {
@@ -45,7 +48,14 @@ export default (env = {}) => ({
             {
                 test: /\.md$/,
                 use: [
-                    'raw-loader'
+                    {
+                        loader: 'remark-loader',
+                        options: {
+                            plugins: [
+                                require('remark-highlight.js')
+                            ]
+                        }
+                    }
                 ]
             }
         ]
@@ -55,15 +65,12 @@ export default (env = {}) => ({
         new HTMLPlugin({
             inject: false,
             template: HTMLTemplate,
-
             title: 'React Banner | A flexible banner component',
             appMountId: 'root',
             mobile: true,
             favicon: './favicon.ico',
             baseHref: env.dev ? '/' : 'https://skipjack.github.io/react-banner/',
-            scripts: env.dev ? [] : [
-                'spa-redirect.js'
-            ],
+            scripts: env.dev ? [] : [ 'spa-redirect.js' ],
             meta: {
                 description: 'A flexible banner component built with ReactJS.'
             }
@@ -78,15 +85,19 @@ export default (env = {}) => ({
             PRODUCTION: !env.dev,
             'process.env.NODE_ENV': env.dev ? `'development'` : `'production'` 
         }),
-        
-        new Webpack.optimize.UglifyJsPlugin({
-            exclude: env.dev ? /.*/gim : /^\s$/,
-            sourceMap: true,
-            comments: false,
-            compress: {
-                warnings: false
-            }
-        })
+
+        ...(env.dev ? [
+            new Webpack.HotModuleReplacementPlugin()
+        ] : [
+            new Webpack.optimize.UglifyJsPlugin({
+                exclude: /^\s$/,
+                sourceMap: true,
+                comments: false,
+                compress: {
+                    warnings: false
+                }
+            })
+        ])
     ],
 
     output: {
@@ -96,10 +107,11 @@ export default (env = {}) => ({
     },
 
     devServer: {
+        hot: true,
         port: 8090,
-        contentBase: Path.resolve(__dirname, './docs'),
-        compress: true,
         inline: true,
-        historyApiFallback: true
+        compress: true,
+        historyApiFallback: true,
+        contentBase: Path.resolve(__dirname, './docs')
     }
 })

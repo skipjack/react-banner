@@ -1,8 +1,8 @@
-import Path from 'path'
-import Webpack from 'webpack'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
+const Path = require('path')
+const Webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-export default {
+module.exports = {
     context: Path.resolve(__dirname, './src'),
     entry: './banner/banner.jsx',
 
