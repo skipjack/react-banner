@@ -2,12 +2,13 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Algolia from 'algoliasearch/lite'
-import Sidebar from 'react-sidebar'
+import ReactSidebar from 'react-sidebar'
 
 // Import Local Deps
 import Banner from '../banner/banner'
 import Logo from '../logo/logo'
 import SPALink from '../links/spa-link'
+import Sidebar from '../sidebar/sidebar'
 import SearchResults from '../search-results/search-results'
 import SiteLinks from './site-links'
 
@@ -35,15 +36,9 @@ export default class Site extends React.Component {
         let { search_hits } = this.state
 
         return (
-            <Sidebar
+            <ReactSidebar
                 contentClassName={ block }
-                sidebar={(
-                    <div style={{
-                        width: '80vw',
-                        height: '100vh',
-                        background: 'white'
-                    }} />
-                )}
+                sidebar={ <Sidebar links={ SiteLinks } /> }
                 open={ this.state.sidebar }
                 onSetOpen={ this._toggleSidebar }>
                 <Banner
@@ -77,7 +72,7 @@ export default class Site extends React.Component {
                         <Logo />
                     </div>
                 </footer>
-            </Sidebar>
+            </ReactSidebar>
         )
     }
 
