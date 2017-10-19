@@ -87,6 +87,7 @@ module.exports = (env = {}) => ({
         }),
 
         ...(env.dev ? [
+            new Webpack.NamedModulesPlugin(),
             new Webpack.HotModuleReplacementPlugin()
         ] : [
             new Webpack.optimize.UglifyJsPlugin({
