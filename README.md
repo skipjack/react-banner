@@ -1,6 +1,8 @@
+[![NPM Version](https://img.shields.io/npm/v/react-banner.svg)](https://www.npmjs.com/package/react-banner)
 [![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg)](https://github.com/conventional-changelog/standard-version)
 
-# react-banner
+react-banner
+------------
 
 A flexible banner component, available as a react plugin.
 
