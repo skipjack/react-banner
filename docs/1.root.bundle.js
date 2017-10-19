@@ -1,0 +1,2 @@
+webpackJsonp([1],{150:function(n,o){n.exports='<p>Information on how to use React Banner with <a href="https://github.com/ReactTraining/react-router">React Router</a>.</p>\n<p><em>Coming soon...</em></p>\n'}});
+//# sourceMappingURL=1.root.bundle.js.map
