@@ -129,14 +129,14 @@ export default class Banner extends React.Component {
         } = this.props
 
         return links.map((link, index) => {
-            let { className = '' } = link,
+            let { className = '', isActive, ...rest } = link,
                 active = this._isActive(link, url),
                 activeMod = active ? `${blockName}__link--active` : '',
                 offsetMod = !search && (links.length - 1) === index ? `${blockName}__link--offset` : ''
 
             return (
                 <Link
-                    { ...link }
+                    { ...rest }
                     className={ `${blockName}__link ${activeMod} ${offsetMod} ${className}` }
                     key={ `${blockName}__link-${index}` }>
                     { link.title }
@@ -153,13 +153,18 @@ export default class Banner extends React.Component {
      * @return {bool} - Whether or not the given link is active
      */
     _isActive(link = {}, url = '') {
-        var testUrl = link.url,
-            regex = new RegExp(`^${testUrl}/?`)
+        if ( typeof link.isActive === 'function' ) {
+            return link.isActive(url)
 
-        return (
-            testUrl === url ||
-            testUrl !== '/' ? url.match(regex) : false
-        )
+        } else {
+            let testUrl = link.url,
+                regex = new RegExp(`^${testUrl}/?`)
+
+            return (
+                testUrl === url ||
+                testUrl !== '/' ? url.match(regex) : false
+            )
+        }
     }
 
     /**
