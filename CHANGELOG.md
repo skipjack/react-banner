@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/skipjack/react-banner/compare/v0.4.0...v0.5.0) (2018-01-25)
+
+
+### Bug Fixes
+
+* ignore unnecessary configs from `publish` ([ca8b6fa](https://github.com/skipjack/react-banner/commit/ca8b6fa))
+
+
+### Features
+
+* allow link objects to use a custom `isActive` function ([b025d88](https://github.com/skipjack/react-banner/commit/b025d88))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/skipjack/react-banner/compare/v0.3.1...v0.4.0) (2017-10-19)
 
