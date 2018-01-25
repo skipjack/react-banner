@@ -1,5 +1,5 @@
 # Logs
-npm-debug.log*
+npm-debug.log
 
 # Dependency Directories
 node_modules
@@ -10,3 +10,5 @@ src
 !src/icons
 !src/links
 docs
+.babelrc
+.eslintrc
