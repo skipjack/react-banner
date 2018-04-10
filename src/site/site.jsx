@@ -99,9 +99,9 @@ export default class Site extends React.Component {
         this.setState({ loading: true })
 
         import(`./content/${page || section}.md`)
-            .then(content => this.setState({
+            .then(module => this.setState({
                 loading: false,
-                content: content
+                content: module.default
             }))
     }
 
