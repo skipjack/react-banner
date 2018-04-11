@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-rc.0"></a>
+# [1.0.0-rc.0](https://github.com/skipjack/react-banner/compare/v0.5.0...v1.0.0-rc.0) (2018-04-11)
+
+
+### Features
+
+* support `overlay` prop to easily overlay the banner on top of other content ([7f16565](https://github.com/skipjack/react-banner/commit/7f16565))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/skipjack/react-banner/compare/v0.4.0...v0.5.0) (2018-01-25)
 
