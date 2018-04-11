@@ -6,9 +6,22 @@ All notable changes to this project will be documented in this file. See [standa
 # [1.0.0-rc.0](https://github.com/skipjack/react-banner/compare/v0.5.0...v1.0.0-rc.0) (2018-04-11)
 
 
+### Code Refactoring
+
+* rename `links` prop to `items` and change object structure ([d415872](https://github.com/skipjack/react-banner/commit/d415872))
+
+
 ### Features
 
 * support `overlay` prop to easily overlay the banner on top of other content ([7f16565](https://github.com/skipjack/react-banner/commit/7f16565))
+
+
+### BREAKING CHANGES
+
+* The `links` prop is now `items`. A `content` field is now used for
+each object in `items` to determine what's displayed rather than the previous 
+`title` property. The `title` field now only determines the normal HTML
+tooltip-like `title` attribute.
 
 
 
