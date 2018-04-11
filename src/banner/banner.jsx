@@ -14,6 +14,7 @@ export default class Banner extends React.Component {
         className: PropTypes.string,
         logo: PropTypes.node,
         url: PropTypes.string.isRequired,
+        overlay: PropTypes.bool,
         icons: PropTypes.shape({
             menu: PropTypes.node.isRequired,
             clear: PropTypes.node.isRequired,
@@ -36,6 +37,7 @@ export default class Banner extends React.Component {
     static defaultProps = {
         blockName: 'banner',
         className: '',
+        overlay: false,
         link: StandardLink,
         search: true,
         links: [],
@@ -53,13 +55,14 @@ export default class Banner extends React.Component {
     }
 
     render() {
-        let { blockName, className } = this.props,
+        let { blockName, className, overlay } = this.props,
             { link: Link } = this.props,
             { searching, sublinks } = this.state,
-            searchMod = searching ? `${blockName}--search` : ''
+            searchMod = searching ? `${blockName}--search` : '',
+            overlayMod = overlay ? `${blockName}--overlay` : ''
 
         return (
-            <header className={ `${blockName} ${searchMod} ${className}` }>
+            <header className={ `${blockName} ${searchMod} ${overlayMod} ${className}` }>
                 <section className={ `${blockName}__inner` }>
                     <button 
                         className={ `${blockName}__mobile` } 
