@@ -41,14 +41,14 @@
     transition: all 250ms;
 }
 
-.banner__links {
+.banner__items {
     flex: 1 1 auto;
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
-.banner__link {
+.banner__item {
     display: inline-block;
     font-size: 0.8em;
     padding: 1.5em;
@@ -59,16 +59,16 @@
     transition: all 250ms;
 }
 
-.banner__link--active {
+.banner__item--active {
     background: #535353;
     color: #fff;
 }
 
-.banner__link--offset {
+.banner__item--offset {
     margin-right: -1.5em;
 }
 
-.banner--search .banner__link {
+.banner--search .banner__item {
     pointer-events: none;
     overflow: hidden;
     white-space: nowrap;
@@ -88,7 +88,7 @@
 
 @media (max-width: 720px) {
     .banner__mobile { display: block; }
-    .banner__links { display: none; }
+    .banner__items { display: none; }
     .banner--search .banner__logo {
         pointer-events: none;
         overflow: hidden;

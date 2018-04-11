@@ -24,7 +24,7 @@ export default class Banner extends React.Component {
             PropTypes.func, 
             PropTypes.instanceOf(React.Component) 
         ]),
-        links: PropTypes.arrayOf( 
+        items: PropTypes.arrayOf( 
             PropTypes.object 
         ),
         search: PropTypes.bool.isRequired,
@@ -40,7 +40,7 @@ export default class Banner extends React.Component {
         overlay: false,
         link: StandardLink,
         search: true,
-        links: [],
+        items: [],
         icons: {
             menu: <HamburgerIcon />,
             clear: <CrossIcon />,
@@ -74,8 +74,8 @@ export default class Banner extends React.Component {
                         { this.props.logo }
                     </Link>
 
-                    <nav className={ `${blockName}__links` }>
-                        { this._links }
+                    <nav className={ `${blockName}__items` }>
+                        { this._items }
                     </nav>
 
                     { this.props.search ? (
@@ -118,49 +118,55 @@ export default class Banner extends React.Component {
     }
 
     /**
-     * An array of markup to render for the links
+     * An array of markup to render for the banner items
      * 
      * @return {array} - An array of components
      */
-    get _links() {
+    get _items() {
         let { 
             blockName, 
-            links, 
-            link: Link, 
+            items, 
+            link: Component, 
             search,
             url 
         } = this.props
 
-        return links.map((link, index) => {
-            let { className = '', isActive, ...rest } = link,
-                active = this._isActive(link, url),
-                activeMod = active ? `${blockName}__link--active` : '',
-                offsetMod = !search && (links.length - 1) === index ? `${blockName}__link--offset` : ''
+        return items.map((item, index) => {
+            let { className = '', content, isActive, ...rest } = item,
+                active = this._isActive(item, url),
+                activeMod = active ? `${blockName}__item--active` : '',
+                offsetMod = !search && (items.length - 1) === index ? `${blockName}__item--offset` : ''
+
+            if ( !item.url ) Component = props => (
+                <span { ...props }>
+                    { props.children }
+                </span>
+            )
 
             return (
-                <Link
+                <Component
                     { ...rest }
-                    className={ `${blockName}__link ${activeMod} ${offsetMod} ${className}` }
-                    key={ `${blockName}__link-${index}` }>
-                    { link.title }
-                </Link>
+                    className={ `${blockName}__item ${activeMod} ${offsetMod} ${className}` }
+                    key={ `${blockName}__item-${index}` }>
+                    { content }
+                </Component>
             )
         })
     }
 
     /**
-     * Check if link is active
+     * Check if the given link `item` is active
      *
-     * @param {object} link - An object describing the link
-     * @param {string} url - The URL to test against
-     * @return {bool} - Whether or not the given link is active
+     * @param  {object} item - An item object describing a link
+     * @param  {string} url  - The URL to test against
+     * @return {bool}        - Whether or not the given item is active
      */
-    _isActive(link = {}, url = '') {
-        if ( typeof link.isActive === 'function' ) {
-            return link.isActive(url)
+    _isActive(item = {}, url = '') {
+        if ( typeof item.isActive === 'function' ) {
+            return item.isActive(url)
 
         } else {
-            let testUrl = link.url,
+            let testUrl = item.url,
                 regex = new RegExp(`^${testUrl}/?`)
 
             return (
@@ -171,13 +177,13 @@ export default class Banner extends React.Component {
     }
 
     /**
-     * Update the current array of sublinks based on the active link
+     * Update the current array of sublinks based on the active item
      * 
      * @param {object} props - The props to use for updating
      */
     _updateSublinks(props = {}) {
-        let { links = [], url } = props,
-            activeLink = links.find(link => this._isActive(link, url)) || {},
+        let { items = [], url } = props,
+            activeLink = items.find(item => this._isActive(item, url)) || {},
             { children = [] } = activeLink
 
         this.setState({

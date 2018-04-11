@@ -20,7 +20,7 @@ export default ({
                                 key={ `${blockName}__link-${index}` }
                                 className={ `${blockName}__link ${activeMod}` }
                                 { ...sublink }>
-                                { sublink.title }
+                                { sublink.content }
                             </Link>
                         )
                     })
