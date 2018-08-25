@@ -126,13 +126,13 @@ export default class Banner extends React.Component {
         let { 
             blockName, 
             items, 
-            link: Component, 
             search,
             url 
         } = this.props
 
         return items.map((item, index) => {
-            let { className = '', content, isActive, ...rest } = item,
+            let { link: Component } = this.props,
+                { className = '', content, isActive, ...rest } = item,
                 active = this._isActive(item, url),
                 activeMod = active ? `${blockName}__item--active` : '',
                 offsetMod = !search && (items.length - 1) === index ? `${blockName}__item--offset` : ''
