@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-rc.1"></a>
+## 1.0.0-rc.1 (2018-08-25)
+
+* chore(deps): update outdated packages and lock file ([96661de](https://github.com/skipjack/react-banner/commit/96661de))
+* fix: fix bug with some links rendering as basic `span` elements ([6c8d069](https://github.com/skipjack/react-banner/commit/6c8d069))
+* docs(changelog): add missing breaking changes ([01a56e6](https://github.com/skipjack/react-banner/commit/01a56e6))
+
+
+
 <a name="1.0.0-rc.0"></a>
 # [1.0.0-rc.0](https://github.com/skipjack/react-banner/compare/v0.5.0...v1.0.0-rc.0) (2018-04-11)
 
