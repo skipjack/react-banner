@@ -1,28 +1,30 @@
-// Import External Deps
+// Foundational
 import React from 'react'
+
+// Components
 import { Route, Switch } from 'react-router-dom'
 import Algolia from 'algoliasearch/lite'
 import ReactSidebar from 'react-sidebar'
-
-// Import Local Deps
 import Banner from '../banner/banner'
 import Logo from '../logo/logo'
 import SPALink from '../links/spa-link'
 import Sidebar from '../sidebar/sidebar'
 import SearchResults from '../search-results/search-results'
-import SiteLinks from './site-links'
 
-// Load Styling
+// Utils
+import items from './items'
+
+// Styling
 import 'highlight.js/styles/ocean'
 import './site-style'
 
-// Specify BEM block name
+// BEM block name
 const block = 'site'
 
-// Set up algolia
+// Search
 const client = Algolia('BH4D9OD16A', '9a5a75e0182379c6190f2e511b20d3a7')
 
-// Create and export the component
+
 export default class Site extends React.Component {
     state = {
         loading: true,
@@ -38,14 +40,14 @@ export default class Site extends React.Component {
         return (
             <ReactSidebar
                 contentClassName={ block }
-                sidebar={ <Sidebar links={ SiteLinks } /> }
+                sidebar={ <Sidebar items={ items } /> }
                 open={ this.state.sidebar }
                 onSetOpen={ this._toggleSidebar }>
                 <Banner
                     className={ `${block}__banner` }
                     logo="React Banner"
                     link={ SPALink }
-                    links={ SiteLinks }
+                    items={ items }
                     url={ this.props.location.pathname }
                     searchResults={ search_hits ? (
                         <SearchResults
@@ -54,7 +56,6 @@ export default class Site extends React.Component {
                     ) : null }
                     onMenuClick={ this._openSidebar }
                     onSearchTyping={ this._search } />
-
                 <main className={ `${block}__content` }>
                     <div className={ `${block}__container` }>
                         { this.state.loading ? (
@@ -66,7 +67,6 @@ export default class Site extends React.Component {
                         )}
                     </div>
                 </main>
-
                 <footer className={ `${block}__footer` }>
                     <div className={ `${block}__container` }>
                         <Logo />

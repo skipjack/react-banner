@@ -1,0 +1,24 @@
+[
+    {
+        "content": "Getting Started",
+        "url": "/"
+    },
+    {
+        "content": "Customization",
+        "url": "/customization"
+    },
+    {
+        "content": "Integration",
+        "url": "/integration",
+        "index": "/integration/headroom",
+        "children": [
+            { "content": "React Router", "url": "/integration/router" },
+            { "content": "React Sidebar", "url": "/integration/sidebar" },
+            { "content": "React Headroom", "url": "/integration/headroom" }
+        ]
+    },
+    {
+        "content": "Github",
+        "url": "https://github.com/skipjack/react-banner"
+    }
+]
