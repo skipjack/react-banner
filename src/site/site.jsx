@@ -55,7 +55,7 @@ export default class Site extends React.Component {
                             results={ search_hits } />
                     ) : null }
                     onMenuClick={ this._openSidebar }
-                    onSearchTyping={ this._search } />
+                    onSearch={ this._search } />
                 <main className={ `${block}__content` }>
                     <div className={ `${block}__container` }>
                         { this.state.loading ? (
