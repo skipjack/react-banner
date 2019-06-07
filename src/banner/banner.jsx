@@ -1,12 +1,20 @@
+// Foundational
 import React from 'react'
 import PropTypes from 'prop-types'
+
+// Components
 import BannerSearch from './banner-search'
 import BannerSub from './banner-sub'
 import StandardLink from '../links/standard-link'
+
+// Images
 import HamburgerIcon from '../icons/hamburger-icon'
 import CrossIcon from '../icons/cross-icon'
 import SearchIcon from '../icons/search-icon'
+
+// Styles
 import './banner-style'
+
 
 export default class Banner extends React.Component {
     static propTypes = {
@@ -69,15 +77,12 @@ export default class Banner extends React.Component {
                         onClick={ this.props.onMenuClick }>
                         { this.props.icons.menu }
                     </button>
-
                     <Link className={ `${blockName}__logo` } url="/">
                         { this.props.logo }
                     </Link>
-
                     <nav className={ `${blockName}__items` }>
                         { this._items }
                     </nav>
-
                     { this.props.search ? (
                         <BannerSearch
                             icons={ this.props.icons }
@@ -89,7 +94,6 @@ export default class Banner extends React.Component {
                             onSearchTyping={ this.props.onSearchTyping } />
                     ) : null }
                 </section>
-
                 <BannerSub
                     blockName={ `${blockName}-sub` }
                     url={ this.props.url }
@@ -146,8 +150,8 @@ export default class Banner extends React.Component {
             return (
                 <Component
                     { ...rest }
-                    className={ `${blockName}__item ${activeMod} ${offsetMod} ${className}` }
-                    key={ `${blockName}__item-${index}` }>
+                    key={ index }
+                    className={ `${blockName}__item ${activeMod} ${offsetMod} ${className}` }>
                     { content }
                 </Component>
             )
