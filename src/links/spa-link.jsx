@@ -1,4 +1,7 @@
+// Foundational
 import React from 'react'
+
+// Components
 import { NavLink } from 'react-router-dom'
 
 /**
@@ -7,13 +10,13 @@ import { NavLink } from 'react-router-dom'
  * @param {object} props - Link options containing at least a `url`
  * @return {object} - Markup for the link
  */
-export default ({ 
+const SPALink = ({ 
     index = '', 
     url = '',
     reload = false,
     ...props 
 }) => {
-    props.title = typeof props.title === 'string' ? props.title : null
+    props.content = typeof props.content === 'string' ? props.content : null
 
     if ( reload || url.match(/^https?:/) ) {
         return (
@@ -21,10 +24,17 @@ export default ({
                 { props.children }
             </a>
         )
+    }
 
-    } else return (
-        <NavLink { ...props } to={ index || url } activeClassName="">
+    return (
+        <NavLink
+            { ...props }
+            to={ index || url }
+            activeClassName="">
             { props.children }
         </NavLink>
     )
 }
+
+// Exposure
+export default SPALink
