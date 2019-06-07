@@ -1,6 +1,26 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.0.0-rc.2](https://github.com/skipjack/react-banner/compare/v1.0.0-rc.1...v1.0.0-rc.2) (2019-06-07)
+
+
+### Bug Fixes
+
+* **deps:** fix `extend@3.0.1` vulnerability ([14746a3](https://github.com/skipjack/react-banner/commit/14746a3))
+
+
+### refactor
+
+* **banner:** migrate to stateless components ([b658b50](https://github.com/skipjack/react-banner/commit/b658b50))
+
+
+### BREAKING CHANGES
+
+* **banner:** `onSearchTyping` is replaced by `onSearch` which
+existed previously but wasn't used at all.
+
+
 
 <a name="1.0.0-rc.1"></a>
 ## 1.0.0-rc.1 (2018-08-25)
