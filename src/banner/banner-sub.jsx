@@ -1,7 +1,12 @@
+// Foundational
 import React from 'react'
+import PropTypes from 'prop-types'
+
+// Styling
 import './banner-sub-style'
 
-export default ({ 
+
+const BannerSub = ({ 
     blockName, 
     link: Link, 
     sublinks = [], 
@@ -29,3 +34,15 @@ export default ({
         </div>
     )
 }
+
+// Validation
+BannerSub.propTypes = {
+    blockName: PropTypes.string,
+    link: PropTypes.func,
+    sublinks: PropTypes.array,
+    url: PropTypes.string,
+    isActive: PropTypes.func
+}
+
+// Exposure
+export default BannerSub
