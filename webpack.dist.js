@@ -1,17 +1,21 @@
+// Foundational
 const Path = require('path')
 const Webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+// Plugins
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
+
 
 module.exports = {
+    mode: 'production',
     context: Path.resolve(__dirname, './src'),
     entry: './banner/banner.jsx',
-
     resolve: {
         extensions: [ '.js', '.jsx', '.css' ]
     },
-
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
@@ -28,17 +32,10 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                minimize: false
-                            }
-                        }
-                    ]
-                })
+                use: [
+                    { loader: MiniCSSExtractPlugin.loader },
+                    'css-loader'
+                ]
             },
             {
                 test: /\.svg$/,
@@ -48,17 +45,11 @@ module.exports = {
             }
         ]
     },
-
     plugins: [
-        new ExtractTextPlugin({
+        new MiniCSSExtractPlugin({
             filename: 'style.css'
-        }),
-        
-        new Webpack.optimize.UglifyJsPlugin({
-            comments: false
         })
     ],
-
     externals: {
         react: {
             root: "React",
@@ -73,14 +64,12 @@ module.exports = {
             amd: "react-dom"
         }
     },
-    
     output: {
         path: Path.resolve(__dirname, './dist'),
         filename: 'react-banner.min.js',
         library: 'Banner',
         libraryTarget: 'umd'
     },
-
     stats: {
         children: false
     }

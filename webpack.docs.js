@@ -1,23 +1,27 @@
-const Path = require('path')
-const Webpack = require('webpack')
+// Foundational
+const path = require('path')
+const webpack = require('webpack')
+
+// Plugins
 const HTMLPlugin = require('html-webpack-plugin')
 const HTMLTemplate = require('html-webpack-template')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+
 
 module.exports = (env = {}) => ({
+    mode: env.dev ? 'development' : 'production',
     devtool: 'source-map',
-    context: Path.resolve(__dirname, './src'),
+    context: path.resolve(__dirname, './src'),
     entry: [
         'react-hot-loader/patch',
         './docs.jsx'
     ],
-
     resolve: {
         extensions: [ '.js', '.jsx', '.json', '.css' ]
     },
-
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
@@ -27,7 +31,7 @@ module.exports = (env = {}) => ({
                         loader: 'eslint-loader',
                         options: {
                             fix: true,
-                            configFile: Path.resolve(__dirname, './.eslintrc')
+                            configFile: path.resolve(__dirname, './.eslintrc')
                         }
                     }
                 ]
@@ -60,7 +64,6 @@ module.exports = (env = {}) => ({
             }
         ]
     },
-
     plugins: [
         new HTMLPlugin({
             inject: false,
@@ -75,44 +78,43 @@ module.exports = (env = {}) => ({
                 description: 'A flexible banner component built with ReactJS.'
             }
         }),
-
         new CopyWebpackPlugin([
             { from: '404.html' },
             { from: 'spa-redirect.js' }
         ]),
-
-        new Webpack.DefinePlugin({
+        new webpack.DefinePlugin({
             PRODUCTION: !env.dev,
             'process.env.NODE_ENV': env.dev ? `'development'` : `'production'` 
         }),
-
         ...(env.dev ? [
-            new Webpack.NamedModulesPlugin(),
-            new Webpack.HotModuleReplacementPlugin()
-        ] : [
-            new Webpack.optimize.UglifyJsPlugin({
+            new webpack.NamedModulesPlugin(),
+            new webpack.HotModuleReplacementPlugin()
+        ] : [])
+    ],
+    optimization: {
+        minimizer: [
+            new UglifyJSPlugin({
                 exclude: /^\s$/,
-                sourceMap: true,
-                comments: false,
-                compress: {
-                    warnings: false
+                uglifyOptions: {
+                    sourceMap: true
                 }
             })
-        ])
-    ],
-
+        ]
+    },
+    performance: {
+        hints: false
+    },
     output: {
-        path: Path.resolve(__dirname, './docs'),
+        path: path.resolve(__dirname, './docs'),
         publicPath: env.dev ? '/' : '',
         filename: 'root.bundle.js'
     },
-
     devServer: {
         hot: true,
         port: 8090,
         inline: true,
         compress: true,
         historyApiFallback: true,
-        contentBase: Path.resolve(__dirname, './docs')
+        contentBase: path.resolve(__dirname, './docs')
     }
 })
