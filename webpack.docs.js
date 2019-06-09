@@ -5,8 +5,8 @@ const webpack = require('webpack')
 // Plugins
 const HTMLPlugin = require('html-webpack-plugin')
 const HTMLTemplate = require('html-webpack-template')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 
 module.exports = (env = {}) => ({
@@ -78,7 +78,7 @@ module.exports = (env = {}) => ({
                 description: 'A flexible banner component built with ReactJS.'
             }
         }),
-        new CopyWebpackPlugin([
+        new CopyPlugin([
             { from: '404.html' },
             { from: 'spa-redirect.js' }
         ]),
@@ -93,11 +93,8 @@ module.exports = (env = {}) => ({
     ],
     optimization: {
         minimizer: [
-            new UglifyJSPlugin({
-                exclude: /^\s$/,
-                uglifyOptions: {
-                    sourceMap: true
-                }
+            new TerserPlugin({
+                sourceMap: true
             })
         ]
     },
