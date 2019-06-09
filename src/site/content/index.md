@@ -7,8 +7,8 @@ Banners of one kind or another are used on a wide variety of sites and often pro
 
 This component can be installed from npm:
 
-```bash
-npm install --save react-banner
+``` bash
+npm install react-banner
 ```
 
 You can also grab the minified JavaScript and CSS straight from `/dist` and include it with a `<script>` tag.
@@ -18,7 +18,7 @@ You can also grab the minified JavaScript and CSS straight from `/dist` and incl
 
 The following example shows the most basic setup possible. Note that it assumes a webpack environment, with a pre-processor like [babel][1] enabled to allow ES2015 and JSX...
 
-```javascript
+``` js
 import React from 'react'
 import Banner from 'react-banner'
 import 'react-banner/dist/style.css'
@@ -28,13 +28,13 @@ export default props => {
         <Banner
             logo="My Logo"
             url={ window.location.pathname }
-            links={[
-                { "title": "Example Link", "url": "/example" },
-                { "title": "Another", "url": "/another" },
-                { "title": "Link w/ Children", "url": "/children", "children": [
-                    { "title": "John", "url": "/children/john" },
-                    { "title": "Jill", "url": "/children/jill" },
-                    { "title": "Jack", "url": "/children/jack" }
+            items={[
+                { "content": "Example Link", "url": "/example" },
+                { "content": "Another", "url": "/another" },
+                { "content": "Link w/ Children", "url": "/children", "children": [
+                    { "content": "John", "url": "/children/john" },
+                    { "content": "Jill", "url": "/children/jill" },
+                    { "content": "Jack", "url": "/children/jack" }
                 ]}
             ]} />
     )
