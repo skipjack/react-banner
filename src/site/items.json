@@ -14,7 +14,8 @@
         "children": [
             { "content": "React Router", "url": "/integration/router" },
             { "content": "React Sidebar", "url": "/integration/sidebar" },
-            { "content": "React Headroom", "url": "/integration/headroom" }
+            { "content": "React Headroom", "url": "/integration/headroom" },
+            { "content": "Search", "url": "/integration/search" }
         ]
     },
     {
