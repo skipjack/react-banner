@@ -1,15 +1,15 @@
-// Import External Dependencies
+// Foundational
 import React from 'react'
 import Utils from 'docsearch.js/dist/npm/src/lib/utils'
 
-// Load Styling
+// Styling
 import 'docsearch.js/dist/cdn/docsearch.css'
 import './search-results-style'
 
-// Specify BEM block name
+// BEM block name
 const block = 'search-results'
 
-// Create and export the component
+
 export default class SearchResults extends React.Component {
     render() {
         let { results } = this.props,
