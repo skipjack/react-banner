@@ -1,12 +1,19 @@
-Customizing React Banner can be done in two ways. The props listed below can be used to tweak, change, and respond to the **functionality** offered by this component. To change the **layout** and **color scheme** we recommend extending or forking the base stylesheet.
+Customizing React Banner can be done in two ways. The props listed below can 
+be used to tweak, change, and respond to the __functionality__ offered by this 
+component. To change the __layout__ and __color scheme__ we recommend 
+extending or forking the base stylesheet.
+
 
 ## Supported Props
 
 #### blockName (string)
 
-This package follows [BEM naming conventions][1]. If you are doing a lot of custom styling or otherwise require control of the base name for all css classes, go ahead and use this option to alter the base class. 
+This package follows [BEM naming conventions][1]. If you are doing a lot of 
+custom styling or otherwise require control of the base name for all css 
+classes, go ahead and use this option to alter the base class. 
 
-> **Warning:** This requires that you fork the stylesheet and update all classes there as well.
+> __Warning:__ This requires that you fork the stylesheet and update all 
+> classes there as well.
 
 #### className (string)
 
@@ -14,23 +21,28 @@ Adds an additional class to the root `<header>` element.
 
 #### logo (node)
 
-The image, text, or whatever else you may want to display in the left section of the banner.
+The image, text, or whatever else you may want to display in the left section 
+of the banner.
 
 #### url (string)
 
-The current url, used to determine which link (or links) is active. If you're building a normal site it's enough to just pass `window.location.pathname`, with [react-router][2] `this.props.location.pathname` would also work.
+The current url, used to determine which link (or links) is active. If you're 
+building a normal site it's enough to just pass `window.location.pathname`, 
+with [react-router][2] `props.location.pathname` should be used.
 
 #### link (component)
 
-The component used for routing and displaying links. See the **Custom Links** section below for more details.
+The component used for routing and displaying links. See the __Custom Links__ 
+section below for more details.
 
-#### links (array)
+#### items (array)
 
-The data used to generate the navigation links. Pass an array of objects that conform to the spec in **Link Data** below.
+The data used to generate the navigation items. Pass an array of objects that 
+conform to the spec in __Item Data__ below.
 
-#### search (boolean)
+#### searchBar (boolean)
 
-Pass `false` to turn off the search bar.
+Pass `false` to remove the search bar.
 
 #### onMenuClick (function)
 
@@ -38,46 +50,61 @@ A callback fired whenever the mobile ("hamburger") menu button is clicked.
 
 #### onSearch (function)
 
-A callback fired whenever the user submits a search.
-
-#### onSearchTyping (function)
-
-A callback fired every time the user types in the search field.
+A callback fired whenever the user changes the search input.
 
 
-## Link Data
+## Item Data
 
-Each link object **MUST** contain `title` and `url` properties. This component will also handle the first level of `children` link objects by displaying a secondary navigation menu under the main banner. Any more levels of nested `children` would have to be handled using a custom link component (described above) or in another part of your site. Here's an example of a valid link object:
+Each link object __MUST__ contain `title` and `url` properties. This component 
+will also handle the first level of `children` link objects by displaying a 
+secondary navigation menu under the main banner. Any more levels of nested 
+`children` would have to be handled using a custom link component (described 
+above) or in another part of your site. Here's an example of a valid link 
+object:
 
-```js
+``` js
 {
-    title: 'Example',
+    content: 'Example',
     url: '/example',
     children: [ ... ] // Optional
 }
 ```
 
-Note that anything renderable is allowed in the link's `title` prop, e.g. the following code would allow you to render an icon in place of text (using JSX):
+Note that anything renderable is allowed in the link's `title` prop, e.g. the 
+following code would allow you to render an icon in place of text (using JSX):
 
-```js
+``` js
 {
     title: <i className="icon-github" />,
     url: 'https://github.com'
 }
 ```
 
-> **Note:** The icon code shown above is dependent on having an icon font available (e.g. [font awesome][6]). However you could also render a full SVG, component, or anything else in the same manner.
+> __Note:__ The icon code shown above is dependent on having an icon font 
+> available (e.g. [font awesome][6]). However you could also render a full 
+> SVG, component, or anything else in the same manner.
 
 
 ## Custom Links
 
-Passing a custom link component can be an easy way to extend the navigation section of the banner. For example, you could pass a custom component that acts as a dropdown to render `children` if your site contains a large amount of pages.
+Passing a custom link component can be an easy way to extend the navigation 
+section of the banner. For example, you could pass a custom component that 
+acts as a dropdown to render `children` if your site contains a large amount 
+of pages.
 
-There are two pre-built link components provided in the `/src/links` directory: `StandardLink` being the default while `SPALink` can be used for single page applications using react-router (like this site, for example). The data from each link object, described below, is spread onto this component as props as well as a BEM element class name and active modifier class (if the link is active). 
+There are two pre-built link components provided in the `/src/links` 
+directory: `StandardLink` being the default while `SPALink` can be used for 
+single page applications using react-router (like this site, for example). The 
+data from each link object, described below, is spread onto this component as 
+props as well as a BEM element class name and active modifier class (if the 
+link is active). 
 
-The two components above, however, are more for demonstration purposes and not very customizable. We recommend creating your own link component, using the [two defaults][3] for inspiration. For example, you could use HTML5 history API manually:
+The two components above, however, are more for demonstration purposes and not 
+very customizable. We recommend creating your own link component, using the [
+two defaults][3] for inspiration. For example, you could use HTML5 history API 
+manually:
 
-```js
+``` js
 // ... import dependencies and such
 
 class CustomLink extends React.Component {
@@ -110,29 +137,37 @@ export default props => {
             logo="My Logo"
             url={ window.location.pathname }
             link={ CustomLink } // Pass our custom link component
-            links={[
-                { "title": "Example Link", "url": "/example" },
-                { "title": "Another", "url": "/another" },
-                { "title": "Link w/ Children", "url": "/children", "children": [
-                    { "title": "John", "url": "/children/john" },
-                    { "title": "Jill", "url": "/children/jill" },
-                    { "title": "Jack", "url": "/children/jack" }
+            items={[
+                { "content": "Example Link", "url": "/example" },
+                { "content": "Another", "url": "/another" },
+                { "content": "Child Links", "url": "/children", "children": [
+                    { "content": "John", "url": "/children/john" },
+                    { "content": "Jill", "url": "/children/jill" },
+                    { "content": "Jack", "url": "/children/jack" }
                 ]}
             ]} />
     )
 }
 ```
 
-> **Note:** If all you'd like to customize is the styling of links, there is no need to pass a custom component. Simply fork and edit the stylesheet as you wish.
+> __Note:__ If all you'd like to customize is the styling of items, there is 
+> no need to pass a custom component. Simply fork and edit the stylesheet as 
+> you wish.
 
 
 ## The Stylesheet
 
-This component comes with a [base stylesheet][4] that is meant to be forked and extended. Most people will at least need to change the color scheme to match their own branding. We encourage you to tweak the layout to suit your needs as well but will only officially support the base stylesheet provided. Most minor layout changes should be fine, but changing the layout of bits like the search bar could cause some funkiness.
+This component comes with a [base stylesheet][4] that is meant to be forked 
+and extended. Most people will at least need to change the color scheme to 
+match their own branding. We encourage you to tweak the layout to suit your 
+needs as well but will only officially support the base stylesheet provided. 
+Most minor layout changes should be fine, but changing the layout of bits like 
+the search bar could cause some funkiness.
 
-Below are some design variations people have come up with. If you work some magic of your own please [ping me][5] and I'll add it to the list!
+Below are some design variations people have come up with. If you work some 
+magic of your own please [ping me][5] and I'll add it to the list!
 
-> TODO: Add screenshots
+> @todo add screenshots
 
 
 [1]: http://getbem.com/naming/

@@ -7,40 +7,34 @@ integrated with things like [React Headroom][1] to achieve this behavior.
 Going forward with our original example, you would `npm install react-headroom 
 --save` and update the code as such:
 
-```javascript
-import React from 'react'
-import Banner from 'react-banner'
-import Headroom from 'react-headroom' // Import it
-import 'react-banner/dist/style.css'
+``` diff
+  import React from 'react'
+  import Banner from 'react-banner'
++ import Headroom from 'react-headroom'
+  import 'react-banner/dist/style.css'
 
-export default props => {
-    // Wrap it around your banner
-    return (
-        <Headroom>
-            <Banner
-                logo="My Logo"
-                url={ window.location.pathname }
-                links={[
-                    { "title": "Example Link", "url": "/example" },
-                    { "title": "Another", "url": "/another" },
-                    { "title": "Link w/ Children", "url": "/children", "children": [
-                        { "title": "John", "url": "/children/john" },
-                        { "title": "Jill", "url": "/children/jill" },
-                        { "title": "Jack", "url": "/children/jack" }
-                    ]}
-                ]} />
-        </Headroom>
-    )
-}
+  export default props => {
+      return (
++         <Headroom>
+              <Banner
+                  logo="My Logo"
+                  url={ window.location.pathname }
+                  items={[
+                      { "content": "Example Link", "url": "/example" },
+                      { "content": "Another", "url": "/another" }
+                  ]} />
++         </Headroom>
+      )
+  }
 ```
 
 
 ## Configuration with React Sidebar
 
-Making this component play nicely with [react-sidebar][2] is a bit trickier but 
-can still be done. You'll need to store your main content element and pass it as 
-the `parent` prop to `<Headroom>`. See the [main component][3] used to generate 
-this documentation for an example.
+Making this component play nicely with [react-sidebar][2] is a bit trickier 
+but can still be done. You'll need to store your main content element and pass
+it as the `parent` prop to `<Headroom>`. See the [main component][3] used to 
+generate this documentation for an example.
 
 For more details please see the headroom component's [documentation][1].
 
