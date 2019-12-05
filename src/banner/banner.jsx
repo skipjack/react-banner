@@ -76,7 +76,7 @@ const Banner = ({
                     { items.map((item, index) => (
                         <BannerItem
                             { ...item }
-                            className={ `${blockName}__item` }
+                            className={ `${blockName}__item ${item.className || ''}` }
                             key={ index }
                             link={ Link }
                             active={ isActive(item, url) } />

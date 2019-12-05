@@ -14,7 +14,7 @@ const BannerItem = ({
     const activeMod = active ? `${className}--active` : ''
 
     if ( !url ) return (
-        <span { ...rest }>
+        <span className={className} { ...rest }>
             { content }
         </span>
     )
