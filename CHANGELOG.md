@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/skipjack/react-banner/compare/v1.0.1...v1.0.2) (2020-01-09)
+
+
+### Bug Fixes
+
+* fix broken active class name ([4790380](https://github.com/skipjack/react-banner/commit/4790380))
+
+
+
 ### [1.0.1](https://github.com/skipjack/react-banner/compare/v1.0.0...v1.0.1) (2019-12-05)
 
 
