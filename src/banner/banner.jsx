@@ -77,6 +77,7 @@ const Banner = ({
                         <BannerItem
                             { ...item }
                             className={ `${blockName}__item ${item.className || ''}` }
+                            activeClassName={ `${blockName}__item--active` }
                             key={ index }
                             link={ Link }
                             active={ isActive(item, url) } />

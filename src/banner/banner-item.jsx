@@ -4,14 +4,15 @@ import PropTypes from 'prop-types'
 
 
 const BannerItem = ({
-    className,
+    className = '',
+    activeClassName = '',
     content,
     active,
     url,
     link: Link,
     ...rest
 }) => {
-    const activeMod = active ? `${className}--active` : ''
+    const activeMod = active ? activeClassName : ''
 
     if ( !url ) return (
         <span className={className} { ...rest }>
