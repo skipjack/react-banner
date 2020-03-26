@@ -64,7 +64,8 @@ const Banner = ({
     return (
         <header className={ `${blockName} ${searchMod} ${overlayMod} ${className}` }>
             <section className={ `${blockName}__inner` }>
-                <button 
+                <button
+                    aria-label='Open menu'
                     className={ `${blockName}__mobile` } 
                     onClick={ onMenuClick }>
                     { icons.menu }
