@@ -55,11 +55,13 @@ const BannerSearch = ({
                     onSearch(e.target.value)
                 }} />
             <button
+                aria-label='Hide search box'
                 className={ `${blockName}__icon ${blockName}__clear` }
                 onClick={ onToggle }>
                 { icons.clear }
             </button>
             <button
+                aria-label='Show search box'
                 className={ `${blockName}__icon ${blockName}__search` }
                 onClick={ onToggle }>
                 { icons.search }
