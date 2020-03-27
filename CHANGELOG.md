@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/skipjack/react-banner/compare/v1.0.2...v1.0.3) (2020-03-27)
+
+
+### Bug Fixes
+
+* **deps:** fix a bunch of audit warnings ([fbe61b9](https://github.com/skipjack/react-banner/commit/fbe61b9))
+* improve button accessibility ([#17](https://github.com/skipjack/react-banner/issues/17)) ([a919af0](https://github.com/skipjack/react-banner/commit/a919af0))
+
+
+
 ### [1.0.2](https://github.com/skipjack/react-banner/compare/v1.0.1...v1.0.2) (2020-01-09)
 
 
