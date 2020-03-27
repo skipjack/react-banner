@@ -47,7 +47,8 @@ const Example = props => {
                         { "content": "Jack", "url": "/children/jack" }
                     ]
                 }
-            ]} />
+            ]}
+        />
     )
 }
 ```
